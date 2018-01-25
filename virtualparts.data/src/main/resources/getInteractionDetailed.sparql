@@ -1,0 +1,79 @@
+PREFIX sbol2: <http://sbols.org/v2#>
+PREFIX biopax: <http://www.biopax.org/release/biopax-level3.owl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ncbi: <http://http://www.ncbi.nlm.nih.gov#>
+PREFIX soIdentifiers: <http://identifiers.org/so/>
+
+CONSTRUCT
+{
+  ?ModuleDefinition a sbol2:ModuleDefinition ;
+    sbol2:functionalComponent ?FunctionalComponent ;
+    sbol2:interaction ?Interaction .
+
+  ?Interaction 
+    sbol2:participation ?Participation ;
+    ?IntereactionProperty ?IntereactionPropertyValue .
+
+  ?Participation ?ParticipationProperty ?ParticipationPropertyValue ;
+    sbol2:participant ?FunctionalComponent .
+  
+  ?FunctionalComponent a sbol2:FunctionalComponent ;
+    sbol2:definition ?ComponentDefinition ;
+    sbol2:access ?Access ;
+    sbol2:direction ?Direction ;
+    sbol2:mapsTo ?MapsTo .
+  
+   ?ComponentDefinitionToReport a sbol2:ComponentDefinition ;  
+    dcterms:title ?ComponentDefinitionName ;
+    sbol2:role ?ComponentDefinitionRole ;
+    sbol2:displayId ?ComponentDefinitionDisplayId;
+    sbol2:type ?ComponentDefinitionType .	
+}
+WHERE
+{
+  {
+    ?Interaction a sbol2:Interaction ;
+      sbol2:participation ?Participation.       
+  
+    ?Participation a sbol2:Participation ;
+      sbol2:participant ?FunctionalComponent ;
+      ?ParticipationProperty ?ParticipationPropertyValue .
+  
+    ?FunctionalComponent a sbol2:FunctionalComponent ;
+      sbol2:definition ?ComponentDefinition .
+    
+  OPTIONAL {?FunctionalComponent sbol2:access ?Access .}
+  OPTIONAL {?FunctionalComponent sbol2:direction ?Direction .}
+  OPTIONAL {?FunctionalComponent sbol2:mapsTo ?MapsTo .}  
+        
+    ?ModuleDefinition a sbol2:ModuleDefinition ;
+      sbol2:interaction ?Interaction .      
+    
+    FILTER (?Interaction = <%s>)
+    FILTER (?ParticipationProperty != sbol2:participant)
+    
+  }  
+  UNION  
+  {  
+    ?Interaction a sbol2:Interaction ;
+      ?IntereactionProperty ?IntereactionPropertyValue .      
+    
+    FILTER (?Interaction = <%s>)
+    FILTER (?IntereactionProperty != sbol2:participation)  
+  } 
+  UNION
+  {
+    ?Interaction sbol2:participation ?Participation.         
+    ?Participation sbol2:participant ?FunctionalComponent .     
+    ?FunctionalComponent sbol2:definition ?ComponentDefinitionToReport .
+    ?ComponentDefinitionToReport a sbol2:ComponentDefinition ;
+    	sbol2:type ?ComponentDefinitionType .
+   
+  OPTIONAL {?ComponentDefinitionToReport  dcterms:title ?ComponentDefinitionName }
+  OPTIONAL {?ComponentDefinitionToReport sbol2:role ?ComponentDefinitionRole }
+  OPTIONAL {?ComponentDefinitionToReport sbol2:displayId ?ComponentDefinitionDisplayId} 	
+  FILTER (?Interaction = <%s>)
+  }
+}

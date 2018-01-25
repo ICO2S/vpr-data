@@ -1,0 +1,56 @@
+PREFIX sbol2: <http://sbols.org/v2#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX sbol: <http://sbols.org/v2#>
+
+CONSTRUCT  
+{  
+  <%s> a sbol2:ComponentDefinition ;
+      sbol2:type ?Type ;
+      sbol2:component ?sc ;
+      sbol2:sequenceAnnotation ?sa .
+  
+   ?sc a sbol:Component ; 
+       sbol:definition ?scd ;
+       sbol2:access ?scAccess .
+   
+  ?scd a sbol:ComponentDefinition ;  
+       dcterms:title ?scdName ;
+       sbol2:role ?scdRole ;
+       sbol2:displayId ?scdDisplayId;
+       sbol2:type ?scdType .	
+    
+  ?sa a sbol:SequenceAnnotation ;
+      sbol:component ?sc;
+      sbol:location ?loc .
+  
+  ?loc a sbol:Range ;
+       sbol:start ?start ;
+       sbol:end ?end ;
+  	   sbol2:orientation ?orientation .
+       
+}
+WHERE
+{
+  <%s> a sbol2:ComponentDefinition;
+      sbol2:type ?Type ;
+      sbol2:component ?sc ;
+      sbol2:sequenceAnnotation ?sa.
+  
+  ?sc sbol:definition ?scd ;
+      sbol2:access ?scAccess .
+  
+  ?scd sbol2:type ?scdType .
+  
+  OPTIONAL {?scd  dcterms:title ?scdName }
+  OPTIONAL {?scd sbol2:role ?scdRole }
+  OPTIONAL {?scd sbol2:displayId ?scdDisplayId}
+  
+  ?sa a sbol:SequenceAnnotation ;
+      sbol:component ?sc;
+      sbol:location ?loc .
+  
+  ?loc a sbol:Range ;
+       sbol:start ?start ;
+       sbol:end ?end ;
+  OPTIONAL {?loc  sbol2:orientation ?orientation }    
+}

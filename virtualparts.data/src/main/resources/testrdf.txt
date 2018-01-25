@@ -1,0 +1,42 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:sbol="http://sbols.org/v2#">
+   <sbol:ModuleDefinition rdf:about="http://www.bacillondex.org/module_BO_2685__in_by__BO_10845">
+      <sbol:interaction>
+         <sbol:Interaction rdf:about="http://www.bacillondex.org/module_BO_2685__in_by__BO_10845/BO_2685__in_by__BO_10845">
+            <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+            <sbol:type rdf:resource="http://purl.org/obo/owl/GO#GO_0045892"/>
+            <sbol:persistentIdentity rdf:resource="http://www.bacillondex.org/module_BO_2685__in_by__BO_10845/BO_2685__in_by__BO_10845"/>
+            <sbol:displayId>BO_2685__in_by__BO_10845</sbol:displayId>
+            <sbol:participation>
+               <sbol:Participation rdf:about="http://www.bacillondex.org/module_BO_2685__in_by__BO_10845/BO_2685__in_by__BO_10845/BO_2685">
+                  <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+                  <sbol:persistentIdentity rdf:resource="http://www.bacillondex.org/module_BO_2685__in_by__BO_10845/BO_2685__in_by__BO_10845/BO_2685"/>
+                  <sbol:displayId>BO_2685</sbol:displayId>
+                  <sbol:participant>
+                     <sbol:FunctionalComponent rdf:about="http://www.bacillondex.org/module_BO_2685__in_by__BO_10845/BO_2685">
+                        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+                        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+                        <sbol:definition rdf:resource="http://www.bacillondex.org/BO_2685"/>
+                     </sbol:FunctionalComponent>
+                  </sbol:participant>
+               </sbol:Participation>
+            </sbol:participation>
+            <sbol:participation>
+               <sbol:Participation rdf:about="http://www.bacillondex.org/module_BO_2685__in_by__BO_10845/BO_2685__in_by__BO_10845/BO_10845">
+                  <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+                  <sbol:persistentIdentity rdf:resource="http://www.bacillondex.org/module_BO_2685__in_by__BO_10845/BO_2685__in_by__BO_10845/BO_10845"/>
+                  <sbol:displayId>BO_10845</sbol:displayId>
+                  <sbol:participant>
+                     <sbol:FunctionalComponent rdf:about="http://www.bacillondex.org/module_BO_2685__in_by__BO_10845/BO_10845">
+                        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+                        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+                        <sbol:definition rdf:resource="http://www.bacillondex.org/BO_10845"/>
+                     </sbol:FunctionalComponent>
+                  </sbol:participant>
+               </sbol:Participation>
+            </sbol:participation>
+         </sbol:Interaction>
+      </sbol:interaction>
+   </sbol:ModuleDefinition>
+</rdf:RDF>

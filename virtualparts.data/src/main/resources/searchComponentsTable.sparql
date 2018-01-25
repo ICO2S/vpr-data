@@ -1,0 +1,26 @@
+PREFIX sbol2: <http://sbols.org/v2#>
+PREFIX biopax: <http://www.biopax.org/release/biopax-level3.owl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ncbi: <http://http://www.ncbi.nlm.nih.gov#>
+SELECT  
+	?ComponentDefinition
+    (group_concat(DISTINCT ?Type;SEPARATOR=",") as ?Types) 
+	(group_concat(DISTINCT ?Name;SEPARATOR=",") as ?Names) 
+	(group_concat(DISTINCT ?Role;SEPARATOR=",") as ?Roles) 
+	?TaxonomyId
+WHERE
+{
+?ComponentDefinition a sbol2:ComponentDefinition ;
+  sbol2:type ?Type ;
+  dcterms:title ?Name ;
+  sbol2:role ?Role .
+  
+  OPTIONAL {?ComponentDefinition ncbi:taxid ?TaxonomyId}
+  %s
+}
+
+GROUP BY ?ComponentDefinition ?TaxonomyId
+LIMIT %d
+OFFSET %d
