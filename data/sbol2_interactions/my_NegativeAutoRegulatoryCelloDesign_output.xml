@@ -5,16 +5,6 @@
     <sbol:displayId>NegativeAutoRegulatoryDesign_Cello_module</sbol:displayId>
     <sbol:version>1</sbol:version>
     <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/NegativeAutoRegulatoryDesign_Cello/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/NegativeAutoRegulatoryDesign_Cello"/>
-        <sbol:displayId>NegativeAutoRegulatoryDesign_Cello</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello/1"/>
-        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
-        <sbol:direction rdf:resource="http://sbols.org/v2#none"/>
-      </sbol:FunctionalComponent>
-    </sbol:functionalComponent>
-    <sbol:functionalComponent>
       <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_10845/1">
         <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_10845"/>
         <sbol:displayId>BO_10845</sbol:displayId>
@@ -24,39 +14,16 @@
         <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
       </sbol:FunctionalComponent>
     </sbol:functionalComponent>
-    <sbol:interaction>
-      <sbol:Interaction rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845"/>
-        <sbol:displayId>BO_32077_encodes_BO_10845</sbol:displayId>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/NegativeAutoRegulatoryDesign_Cello/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/NegativeAutoRegulatoryDesign_Cello"/>
+        <sbol:displayId>NegativeAutoRegulatoryDesign_Cello</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <dcterms:title>yvbS encodes AraC</dcterms:title>
-        <ns6:OBI_0001617>27110921</ns6:OBI_0001617>
-        <ns6:OBI_0001617>23571273</ns6:OBI_0001617>
-        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
-        <sbol:participation>
-          <sbol:Participation rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/product_participation/1">
-            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/product_participation"/>
-            <sbol:displayId>product_participation</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <ns6:OBI_0001617>27110921</ns6:OBI_0001617>
-            <ns6:OBI_0001617>23571273</ns6:OBI_0001617>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
-            <sbol:participant rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_10845/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-        <sbol:participation>
-          <sbol:Participation rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/cds_participation/1">
-            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/cds_participation"/>
-            <sbol:displayId>cds_participation</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <ns6:OBI_0001617>27110921</ns6:OBI_0001617>
-            <ns6:OBI_0001617>23571273</ns6:OBI_0001617>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
-            <sbol:participant rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/NegativeAutoRegulatoryDesign_Cello/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-      </sbol:Interaction>
-    </sbol:interaction>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#none"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
     <sbol:interaction>
       <sbol:Interaction rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_10845_represses_BO_27632/1">
         <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_10845_represses_BO_27632"/>
@@ -90,7 +57,47 @@
         </sbol:participation>
       </sbol:Interaction>
     </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845"/>
+        <sbol:displayId>BO_32077_encodes_BO_10845</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>yvbS encodes AraC</dcterms:title>
+        <ns6:OBI_0001617>27110921</ns6:OBI_0001617>
+        <ns6:OBI_0001617>23571273</ns6:OBI_0001617>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/cds_participation/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/cds_participation"/>
+            <sbol:displayId>cds_participation</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <ns6:OBI_0001617>27110921</ns6:OBI_0001617>
+            <ns6:OBI_0001617>23571273</ns6:OBI_0001617>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/NegativeAutoRegulatoryDesign_Cello/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/product_participation/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_32077_encodes_BO_10845/product_participation"/>
+            <sbol:displayId>product_participation</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <ns6:OBI_0001617>27110921</ns6:OBI_0001617>
+            <ns6:OBI_0001617>23571273</ns6:OBI_0001617>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello_module/BO_10845/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
   </sbol:ModuleDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/BO_32077/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/BO_32077"/>
+    <sbol:displayId>BO_32077</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+  </sbol:ComponentDefinition>
   <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/BO_27783/1">
     <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/BO_27783"/>
     <sbol:displayId>BO_27783</sbol:displayId>
@@ -112,21 +119,21 @@
     <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
     <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
     <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.org/public/bsu/rbsCdsTerDesign/BO_4257C3/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/rbsCdsTerDesign/BO_4257C3"/>
-        <sbol:displayId>BO_4257C3</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.org/public/bsu/BO_4257/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:component>
       <sbol:Component rdf:about="https://synbiohub.org/public/bsu/rbsCdsTerDesign/BO_27783C1/1">
         <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/rbsCdsTerDesign/BO_27783C1"/>
         <sbol:displayId>BO_27783C1</sbol:displayId>
         <sbol:version>1</sbol:version>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
         <sbol:definition rdf:resource="https://synbiohub.org/public/bsu/BO_27783/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/bsu/rbsCdsTerDesign/BO_4257C3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/rbsCdsTerDesign/BO_4257C3"/>
+        <sbol:displayId>BO_4257C3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/bsu/BO_4257/1"/>
       </sbol:Component>
     </sbol:component>
     <sbol:component>
@@ -159,20 +166,6 @@
       </sbol:SequenceConstraint>
     </sbol:sequenceConstraint>
   </sbol:ComponentDefinition>
-  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/BO_32077/1">
-    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/BO_32077"/>
-    <sbol:displayId>BO_32077</sbol:displayId>
-    <sbol:version>1</sbol:version>
-    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
-    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
-  </sbol:ComponentDefinition>
-  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/BO_27632/1">
-    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/BO_27632"/>
-    <sbol:displayId>BO_27632</sbol:displayId>
-    <sbol:version>1</sbol:version>
-    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
-    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
-  </sbol:ComponentDefinition>
   <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/BO_10845/1">
     <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/BO_10845"/>
     <sbol:displayId>BO_10845</sbol:displayId>
@@ -186,6 +179,13 @@
     <ns6:OBI_0001617>27110921</ns6:OBI_0001617>
     <ns6:OBI_0002110>10.1145/2631921</ns6:OBI_0002110>
     <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/BO_27632/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/BO_27632"/>
+    <sbol:displayId>BO_27632</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
   </sbol:ComponentDefinition>
   <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello/1">
     <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello"/>

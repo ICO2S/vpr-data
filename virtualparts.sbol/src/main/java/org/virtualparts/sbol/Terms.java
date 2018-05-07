@@ -1,6 +1,6 @@
 package org.virtualparts.sbol;
 
-import static uk.ac.ncl.intbio.core.datatree.Datatree.NamespaceBinding;
+import static org.sbolstandard.core.datatree.Datatree.NamespaceBinding;
 
 import java.net.URI;
 
@@ -8,7 +8,7 @@ import javax.xml.namespace.QName;
 
 import org.sbolstandard.core2.SystemsBiologyOntology;
 
-import uk.ac.ncl.intbio.core.datatree.NamespaceBinding;
+import org.sbolstandard.core.datatree.NamespaceBinding;
 
 public class Terms {
 

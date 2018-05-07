@@ -14,47 +14,15 @@
     <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
     <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
   </sbol:ComponentDefinition>
-  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet/1">
-    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet"/>
-    <sbol:displayId>pTet</sbol:displayId>
-    <sbol:version>1</sbol:version>
-    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
-    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
-  </sbol:ComponentDefinition>
-  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS/1">
-    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS"/>
-    <sbol:displayId>RBS</sbol:displayId>
-    <sbol:version>1</sbol:version>
-    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
-    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
-  </sbol:ComponentDefinition>
-  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/1">
-    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator"/>
-    <sbol:displayId>pBetI_AmtR_Generator</sbol:displayId>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator"/>
+    <sbol:displayId>pTet_AmtR_Generator</sbol:displayId>
     <sbol:version>1</sbol:version>
     <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
     <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
     <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/pBetIC1/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/pBetIC1"/>
-        <sbol:displayId>pBetIC1</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/TerminatorC4/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/TerminatorC4"/>
-        <sbol:displayId>TerminatorC4</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/Terminator/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtRC3/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtRC3"/>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/AmtRC3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/AmtRC3"/>
         <sbol:displayId>AmtRC3</sbol:displayId>
         <sbol:version>1</sbol:version>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
@@ -62,58 +30,14 @@
       </sbol:Component>
     </sbol:component>
     <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBSC2/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBSC2"/>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/RBSC2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/RBSC2"/>
         <sbol:displayId>RBSC2</sbol:displayId>
         <sbol:version>1</sbol:version>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
         <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS/1"/>
       </sbol:Component>
     </sbol:component>
-    <sbol:sequenceConstraint>
-      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtR_RBSC2/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtR_RBSC2"/>
-        <sbol:displayId>AmtR_RBSC2</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
-        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBSC2/1"/>
-        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtRC3/1"/>
-      </sbol:SequenceConstraint>
-    </sbol:sequenceConstraint>
-    <sbol:sequenceConstraint>
-      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/Terminator_AmtRC3/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/Terminator_AmtRC3"/>
-        <sbol:displayId>Terminator_AmtRC3</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
-        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtRC3/1"/>
-        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/TerminatorC4/1"/>
-      </sbol:SequenceConstraint>
-    </sbol:sequenceConstraint>
-    <sbol:sequenceConstraint>
-      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBS_pBetIC1/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBS_pBetIC1"/>
-        <sbol:displayId>RBS_pBetIC1</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
-        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/pBetIC1/1"/>
-        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBSC2/1"/>
-      </sbol:SequenceConstraint>
-    </sbol:sequenceConstraint>
-  </sbol:ComponentDefinition>
-  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI/1">
-    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI"/>
-    <sbol:displayId>pBetI</sbol:displayId>
-    <sbol:version>1</sbol:version>
-    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
-    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
-  </sbol:ComponentDefinition>
-  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/1">
-    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator"/>
-    <sbol:displayId>pTet_AmtR_Generator</sbol:displayId>
-    <sbol:version>1</sbol:version>
-    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
-    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
     <sbol:component>
       <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/TerminatorC4/1">
         <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/TerminatorC4"/>
@@ -130,24 +54,6 @@
         <sbol:version>1</sbol:version>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
         <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/RBSC2/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/RBSC2"/>
-        <sbol:displayId>RBSC2</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/AmtRC3/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet_AmtR_Generator/AmtRC3"/>
-        <sbol:displayId>AmtRC3</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/AmtR/1"/>
       </sbol:Component>
     </sbol:component>
     <sbol:sequenceConstraint>
@@ -181,6 +87,27 @@
       </sbol:SequenceConstraint>
     </sbol:sequenceConstraint>
   </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTet"/>
+    <sbol:displayId>pTet</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS"/>
+    <sbol:displayId>RBS</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI"/>
+    <sbol:displayId>pBetI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+  </sbol:ComponentDefinition>
   <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/Terminator/1">
     <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/Terminator"/>
     <sbol:displayId>Terminator</sbol:displayId>
@@ -202,79 +129,6 @@
     <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
     <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
   </sbol:ComponentDefinition>
-  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/1">
-    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator"/>
-    <sbol:displayId>pAmtR_BetI_Generator</sbol:displayId>
-    <sbol:version>1</sbol:version>
-    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
-    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
-    <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/TerminatorC4/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/TerminatorC4"/>
-        <sbol:displayId>TerminatorC4</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/Terminator/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetIC3/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetIC3"/>
-        <sbol:displayId>BetIC3</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/BetI/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBSC2/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBSC2"/>
-        <sbol:displayId>RBSC2</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/pAmtRC1/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/pAmtRC1"/>
-        <sbol:displayId>pAmtRC1</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:sequenceConstraint>
-      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/Terminator_BetIC3/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/Terminator_BetIC3"/>
-        <sbol:displayId>Terminator_BetIC3</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
-        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetIC3/1"/>
-        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/TerminatorC4/1"/>
-      </sbol:SequenceConstraint>
-    </sbol:sequenceConstraint>
-    <sbol:sequenceConstraint>
-      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetI_RBSC2/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetI_RBSC2"/>
-        <sbol:displayId>BetI_RBSC2</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
-        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBSC2/1"/>
-        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetIC3/1"/>
-      </sbol:SequenceConstraint>
-    </sbol:sequenceConstraint>
-    <sbol:sequenceConstraint>
-      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBS_pAmtRC1/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBS_pAmtRC1"/>
-        <sbol:displayId>RBS_pAmtRC1</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
-        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/pAmtRC1/1"/>
-        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBSC2/1"/>
-      </sbol:SequenceConstraint>
-    </sbol:sequenceConstraint>
-  </sbol:ComponentDefinition>
   <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/1">
     <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator"/>
     <sbol:displayId>pTac_BetI_Generator</sbol:displayId>
@@ -282,12 +136,12 @@
     <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
     <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
     <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/RBSC2/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/RBSC2"/>
-        <sbol:displayId>RBSC2</sbol:displayId>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/BetIC3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/BetIC3"/>
+        <sbol:displayId>BetIC3</sbol:displayId>
         <sbol:version>1</sbol:version>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/BetI/1"/>
       </sbol:Component>
     </sbol:component>
     <sbol:component>
@@ -300,21 +154,21 @@
       </sbol:Component>
     </sbol:component>
     <sbol:component>
-      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/BetIC3/1">
-        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/BetIC3"/>
-        <sbol:displayId>BetIC3</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/BetI/1"/>
-      </sbol:Component>
-    </sbol:component>
-    <sbol:component>
       <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/pTacC1/1">
         <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/pTacC1"/>
         <sbol:displayId>pTacC1</sbol:displayId>
         <sbol:version>1</sbol:version>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
         <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/RBSC2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/RBSC2"/>
+        <sbol:displayId>RBSC2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS/1"/>
       </sbol:Component>
     </sbol:component>
     <sbol:sequenceConstraint>
@@ -345,6 +199,152 @@
         <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
         <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/BetIC3/1"/>
         <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pTac_BetI_Generator/TerminatorC4/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator"/>
+    <sbol:displayId>pBetI_AmtR_Generator</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtRC3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtRC3"/>
+        <sbol:displayId>AmtRC3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/AmtR/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/pBetIC1/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/pBetIC1"/>
+        <sbol:displayId>pBetIC1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBSC2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBSC2"/>
+        <sbol:displayId>RBSC2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/TerminatorC4/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/TerminatorC4"/>
+        <sbol:displayId>TerminatorC4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/Terminator/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtR_RBSC2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtR_RBSC2"/>
+        <sbol:displayId>AmtR_RBSC2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBSC2/1"/>
+        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtRC3/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/Terminator_AmtRC3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/Terminator_AmtRC3"/>
+        <sbol:displayId>Terminator_AmtRC3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/AmtRC3/1"/>
+        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/TerminatorC4/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBS_pBetIC1/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBS_pBetIC1"/>
+        <sbol:displayId>RBS_pBetIC1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/pBetIC1/1"/>
+        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pBetI_AmtR_Generator/RBSC2/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator"/>
+    <sbol:displayId>pAmtR_BetI_Generator</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetIC3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetIC3"/>
+        <sbol:displayId>BetIC3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/BetI/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBSC2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBSC2"/>
+        <sbol:displayId>RBSC2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/RBS/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/pAmtRC1/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/pAmtRC1"/>
+        <sbol:displayId>pAmtRC1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/TerminatorC4/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/TerminatorC4"/>
+        <sbol:displayId>TerminatorC4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/Terminator/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/Terminator_BetIC3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/Terminator_BetIC3"/>
+        <sbol:displayId>Terminator_BetIC3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetIC3/1"/>
+        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/TerminatorC4/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetI_RBSC2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetI_RBSC2"/>
+        <sbol:displayId>BetI_RBSC2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBSC2/1"/>
+        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/BetIC3/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBS_pAmtRC1/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBS_pAmtRC1"/>
+        <sbol:displayId>RBS_pAmtRC1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/pAmtRC1/1"/>
+        <sbol:object rdf:resource="https://synbiohub.utah.edu/public/ACS_SynBio_2017_Cello_Datatset_v5/pAmtR_BetI_Generator/RBSC2/1"/>
       </sbol:SequenceConstraint>
     </sbol:sequenceConstraint>
   </sbol:ComponentDefinition>

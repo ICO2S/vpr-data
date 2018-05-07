@@ -50,7 +50,7 @@ public class AppTest
    
 
     
-    public void testPopulateWithInteractionsNegativeAutoRegulatoryDesign() throws Exception
+    public void un_testPopulateWithInteractionsNegativeAutoRegulatoryDesign() throws Exception
     {
 	 try
 	 {
@@ -69,7 +69,7 @@ public class AppTest
     }
     
     
-    public void testPopulateWithInteractionsNegativeAutoRegulatoryeCelloDesign() throws Exception
+    public void un_testPopulateWithInteractionsNegativeAutoRegulatoryeCelloDesign() throws Exception
     {
 	 try
 	 {
@@ -100,7 +100,7 @@ public class AppTest
 	 }
     }
     
-    public void testPopulateWithInteractionsInverterDesign() throws Exception
+    public void un_testPopulateWithInteractionsInverterDesign() throws Exception
     {
 	 try
 	 {
@@ -124,6 +124,39 @@ public class AppTest
 		SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint));
 		interactionAdder.addInteractions(doc);    	 	   
 	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "inverterExample_output.xml")); 
+	
+	 }
+	 catch (Exception e)
+	 {
+		 e.printStackTrace();
+		 throw e;
+	 }
+    }
+    
+    public void testPopulateWithInteractionsInverterDesign_UserProvidedName() throws Exception
+    {
+	 try
+	 {
+		SBOLDocument doc=new SBOLDocument();
+	    String base="https://synbiohub.org/public/bsu/";
+	    doc.setDefaultURIprefix(base);
+	   
+	    //Designs
+	    String design1="BO_27661:prom;BO_27783:rbs;BO_32077:cds;BO_4257:ter";
+	    String design2="BO_27632:prom;BO_27783:rbs;BO_31554:cds;BO_4257:ter";
+	    
+	    
+	    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, design1), "design1");
+	    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, design2), "design2");
+	    
+	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "inverterExample_UserProvidedName.xml")); 
+		    
+	    	
+		 
+		//SBOLDocument doc=SBOLReader.read(new File(getOutputDir() + "/" + "my_NegativeAutoRegulatoryDesign.xml"));
+		SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint),"newDesign");
+		interactionAdder.addInteractions(doc);    	 	   
+	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "inverterExample_UserProvidedName_output.xml")); 
 	
 	 }
 	 catch (Exception e)

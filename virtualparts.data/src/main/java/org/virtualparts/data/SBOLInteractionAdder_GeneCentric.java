@@ -34,11 +34,38 @@ import org.virtualparts.sbol.SBOLHandler;
 
 public class SBOLInteractionAdder_GeneCentric{
 	private URI endPointUrl=null;
+	private String rootModuleId=null;
+	
 	public SBOLInteractionAdder_GeneCentric(URI endPointUrl)
 	{
 		this.endPointUrl=endPointUrl;
 	}
-		
+	
+	public SBOLInteractionAdder_GeneCentric(URI endPointUrl, String rootModuleId)
+	{
+		this(endPointUrl);
+		this.rootModuleId=rootModuleId;		
+	}
+	
+	private String getRootModuleId(List<ComponentDefinition> designs) throws VPRException
+	{
+		if (designs.size()>=1)
+		{
+			if (this.rootModuleId==null)
+			{
+				return getDisplayId(designs);
+			}
+			else
+			{
+				return rootModuleId;
+			}
+		}
+		else
+		{
+			throw new VPRException("This method should only be called if subdesigns are involved!");
+		}
+	}
+	
 	public void addInteractions(SBOLDocument document) throws VPRException, SBOLValidationException, VPRTripleStoreException {
 		MultiValueMap<URI, SBOLInteractionSummary> interactions=getInteractions(document);
 		if (interactions!=null && interactions.size()>0)
@@ -53,7 +80,7 @@ public class SBOLInteractionAdder_GeneCentric{
 				else
 				{
 					document.setDefaultURIprefix(SBOLHandler.getBaseUri(designs.get(0).getIdentity()));
-					ModuleDefinition parentModuleDef=document.createModuleDefinition(getDisplayId(designs));					
+					ModuleDefinition parentModuleDef=document.createModuleDefinition(getRootModuleId(designs));					
 					addModuleDefinitions(document, designs, parentModuleDef, interactions);
 				}								
 			}
