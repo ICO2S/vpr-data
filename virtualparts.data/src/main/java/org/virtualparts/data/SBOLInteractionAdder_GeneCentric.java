@@ -533,6 +533,28 @@ public class SBOLInteractionAdder_GeneCentric{
 		return false;
 	}
 	
+	private SBOLDocument getInteractionDetail(SBOLInteractionSummary participantInteractionSummary, URI uri) throws VPRException
+	{
+		Cacher cacher=new Cacher();
+		
+		String hashCode=cacher.getHashCode(participantInteractionSummary, uri);
+		SBOLDocument sbolInteractionDocument=null;
+		if (hashCode!=null) 
+		{
+			sbolInteractionDocument=cacher.retrieveFromCache(hashCode);
+		}
+		else
+		{
+			throw new VPRException ("The interaction does not contain any participant: " + participantInteractionSummary.getUri());
+		}
+		if (sbolInteractionDocument==null)
+		{
+			sbolInteractionDocument=SBOLStackHandler.getInteractionDetailed(this.endPointUrl,participantInteractionSummary.getUri());
+			cacher.putInCache(sbolInteractionDocument, hashCode);
+		}
+		return sbolInteractionDocument;
+	}
+	
 	private void addNonDnaInteractions(SBOLDocument document, ModuleDefinition moduleDef,Set<URI> compDefURIs,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		for (URI uri:compDefURIs)
@@ -545,7 +567,8 @@ public class SBOLInteractionAdder_GeneCentric{
 					String displayId=SBOLHandler.getDisplayId(uri.toString());
 					if (moduleDef.getInteraction(displayId)==null)
 					{
-						SBOLDocument sbolInteractionDocument=SBOLStackHandler.getInteractionDetailed(this.endPointUrl,participantInteractionSummary.getUri());
+						SBOLDocument sbolInteractionDocument=getInteractionDetail(participantInteractionSummary, uri);
+						
 						Interaction interaction=sbolInteractionDocument.getModuleDefinitions().iterator().next().getInteractions().iterator().next();
 						if (moduleDef.getInteraction(interaction.getDisplayId())==null)
 						{

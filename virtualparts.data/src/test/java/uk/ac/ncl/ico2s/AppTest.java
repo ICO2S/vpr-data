@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 
 import org.sbolstandard.core2.SBOLDocument;
 import org.sbolstandard.core2.SBOLReader;
+import org.virtualparts.VPRException;
+import org.virtualparts.data.Cacher;
 import org.virtualparts.data.SBOLInteractionAdder_GeneCentric;
 import org.virtualparts.sbol.SBOLHandler;
 import org.virtualparts.sbol.SVPWriteHandler;
@@ -166,6 +168,44 @@ public class AppTest
 	 }
     }
     
+    
+    public void untestCircuit08() throws Exception
+    {
+	 try
+	 {
+		SBOLDocument doc=SBOLReader.read(TestUtils.getOutputDir() + "circuit_0x08_input.xml");
+		String endpoint="https://synbiohub.programmingbiology.org/sparql"; 
+		//SBOLDocument doc=SBOLReader.read(new File(getOutputDir() + "/" + "my_NegativeAutoRegulatoryDesign.xml"));
+		SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint),"newDesign");
+		interactionAdder.addInteractions(doc);    	 	   
+	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "circuit_0x08_output.xml")); 
+	
+	 }
+	 catch (Exception e)
+	 {
+		 e.printStackTrace();
+		 throw e;
+	 }
+    }
+    
+    public void untestCache() throws Exception
+    {
+	 try
+	 {
+		SBOLDocument doc=SBOLReader.read(TestUtils.getOutputDir() + "circuit_0x08_input.xml");
+		Cacher cacher=new Cacher();
+		cacher.putInCache(doc, 1);
+		SBOLDocument doc2=cacher.retrieveFromCache(1);
+		if (doc2==null) {
+			throw new VPRException("Cache does not work!");
+		}
+	 }
+	 catch (Exception e)
+	 {
+		 e.printStackTrace();
+		 throw e;
+	 }
+    }
     
     /*public void testPopulateWithInteractionsInverterSingleDesign() throws Exception
     {

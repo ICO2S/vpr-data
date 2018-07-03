@@ -82,7 +82,7 @@ public class SBOLStackHandler {
 	}
 	
 	public static SBOLDocument getInteractionDetailed(URI stackURI, URI interactionURI) throws VPRException {
-		String str2="";
+		
 		TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());
 		String query = ts.getSparqlQuery("getInteractionDetailed.sparql");
 		query = String.format(query, interactionURI.toString(),interactionURI.toString(),interactionURI.toString());
