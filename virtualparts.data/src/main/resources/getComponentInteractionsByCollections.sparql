@@ -1,0 +1,44 @@
+PREFIX sbol2: <http://sbols.org/v2#>
+PREFIX biopax: <http://www.biopax.org/release/biopax-level3.owl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ncbi: <http://www.ncbi.nlm.nih.gov#>
+PREFIX soIdentifiers: <http://identifiers.org/so/>
+PREFIX sbol: <http://sbols.org/sbol.owl#>
+
+SELECT ?ComponentDefinition 
+	?Interaction 
+	(group_concat(DISTINCT ?InteractionName;SEPARATOR=",") as ?InteractionNames)
+	(group_concat(DISTINCT ?InteractionDescription;SEPARATOR=",") as ?InteractionDescriptions)
+	(group_concat(DISTINCT ?ComponentDefinitionOther;SEPARATOR=",") as ?ComponentDefinitionOthers)
+	(group_concat(DISTINCT ?InteractionType;SEPARATOR=",") as ?InteractionTypes)
+
+WHERE{
+     ?Interaction a sbol2:Interaction ;
+       sbol2:participation ?Participation;
+       sbol2:participation ?ParticipationOther;
+       sbol2:type ?InteractionType . 
+  OPTIONAL {?Interaction dcterms:description ?InteractionDescription}
+  OPTIONAL {?Interaction dcterms:title ?InteractionName}
+  
+    ?Participation a sbol2:Participation ;
+    sbol2:participant ?FunctionalComponent .
+  
+    ?ParticipationOther a sbol2:Participation ;
+    sbol2:participant ?FunctionalComponentOther .
+  
+    ?FunctionalComponent a sbol2:FunctionalComponent ;
+    	sbol2:definition ?ComponentDefinition .
+  
+    ?FunctionalComponentOther  a sbol2:FunctionalComponent ;
+    sbol2:definition ?ComponentDefinitionOther .
+    
+    ?Collection sbol2:member ?ModuleDefinition .
+    
+    ?ModuleDefinition sbol2:interaction ?Interaction .
+    
+  FILTER (%s) 
+}
+
+GROUP BY ?ComponentDefinition ?Interaction
