@@ -7,11 +7,11 @@ PREFIX ncbi: <http://www.ncbi.nlm.nih.gov#>
 PREFIX soIdentifiers: <http://identifiers.org/so/>
 PREFIX sbol: <http://sbols.org/sbol.owl#>
 
-SELECT ?ComponentDefinition 
+SELECT 
 	?Interaction 
 	(group_concat(DISTINCT ?InteractionName;SEPARATOR=",") as ?InteractionNames)
 	(group_concat(DISTINCT ?InteractionDescription;SEPARATOR=",") as ?InteractionDescriptions)
-	(group_concat(DISTINCT ?ComponentDefinitionOther;SEPARATOR=",") as ?ComponentDefinitionOthers)
+	(group_concat(DISTINCT ?ComponentDefinition;SEPARATOR=",") as ?ComponentDefinitions)
 	(group_concat(DISTINCT ?InteractionType;SEPARATOR=",") as ?InteractionTypes)
 
 WHERE{
@@ -25,16 +25,8 @@ WHERE{
     ?Participation a sbol2:Participation ;
     sbol2:participant ?FunctionalComponent .
   
-    ?ParticipationOther a sbol2:Participation ;
-    sbol2:participant ?FunctionalComponentOther .
-  
     ?FunctionalComponent a sbol2:FunctionalComponent ;
     	sbol2:definition ?ComponentDefinition .
-  
-    ?FunctionalComponentOther  a sbol2:FunctionalComponent ;
-    sbol2:definition ?ComponentDefinitionOther .
-    
-  FILTER (?ComponentDefinition = <%s>)
 }
 
-GROUP BY ?ComponentDefinition ?Interaction
+GROUP BY ?Interaction

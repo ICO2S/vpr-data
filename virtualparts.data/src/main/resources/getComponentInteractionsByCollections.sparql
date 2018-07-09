@@ -34,7 +34,11 @@ WHERE{
     ?FunctionalComponentOther  a sbol2:FunctionalComponent ;
     sbol2:definition ?ComponentDefinitionOther .
     
-  FILTER (?ComponentDefinition = <%s>)
+    ?Collection sbol2:member ?ModuleDefinition .
+    
+    ?ModuleDefinition sbol2:interaction ?Interaction .
+    
+  FILTER (%s) 
 }
 
 GROUP BY ?ComponentDefinition ?Interaction

@@ -48,6 +48,7 @@ public class SBOLHandler {
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			throw new VPRException("Could not read the sbol file",e);
 		}
 	}

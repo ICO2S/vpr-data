@@ -1,6 +1,5 @@
 package org.virtualparts.sbol;
 
-import static uk.ac.ncl.intbio.core.datatree.Datatree.NamespaceBinding;
 
 import java.net.URI;
 
@@ -13,13 +12,11 @@ import org.sbolstandard.core2.Interaction;
 import org.sbolstandard.core2.ModuleDefinition;
 import org.sbolstandard.core2.Participation;
 import org.sbolstandard.core2.SBOLValidationException;
-import org.sbolstandard.core2.SequenceOntology;
 import org.sbolstandard.core2.SystemsBiologyOntology;
 import org.virtualparts.sbol.Terms.sbol2;
 import org.virtualparts.sbol.Terms.vpr;
 import org.virtualparts.sbol.Terms.sbol2.participant;
 
-import uk.ac.ncl.intbio.core.datatree.NamespaceBinding;
 
 public class SBOLInteraction {
 	

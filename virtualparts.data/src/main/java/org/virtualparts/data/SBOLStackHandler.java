@@ -16,13 +16,46 @@ import org.virtualparts.sbol.Terms;
 
 public class SBOLStackHandler {
 
-	public static List<SBOLInteractionSummary> getInteractions(URI componentDefURI, URI stackURI) throws VPRException
+	private static String getCollectionFilter(QueryParameters params)
+	{
+		String collectionFilter="";
+		for (URI uri: params.getCollectionURIs())
+		{
+			if (collectionFilter!="")
+			{
+				collectionFilter+=" || ";
+			}
+			collectionFilter+="?Collection=<" + uri.toString() + ">";
+		}
+		return collectionFilter;
+		
+	}
+	public static List<SBOLInteractionSummary> getInteractions(URI componentDefURI, URI stackURI,QueryParameters params) throws VPRException
 	{
 		List<SBOLInteractionSummary> interactions=new ArrayList<SBOLInteractionSummary>();
 		TripleStoreHandler ts=new TripleStoreHandler(stackURI.toString());
-		String query=ts.getSparqlQuery("getComponentInteractions.sparql");
-		
-		query=String.format(query, componentDefURI.toString());
+		String query=null;
+		if (params!=null && params.getCollectionURIs()!=null && params.getCollectionURIs().size()>0)
+		{
+			String collectionFilter=getCollectionFilter(params);
+			String componentDefFilter=String.format("?ComponentDefinition=<%s>", componentDefURI.toString());
+			String filter=null;
+			if (params.getCollectionURIs().size()>1)
+			{			
+				filter= String.format("%s && (%s)", componentDefFilter, collectionFilter);	
+			}
+			else
+			{
+				filter= String.format("%s && %s", componentDefFilter, collectionFilter);	
+			}
+			query=ts.getSparqlQuery("getComponentInteractionsByCollections.sparql");
+			query=String.format(query, filter);
+		}
+		else
+		{
+			query=ts.getSparqlQuery("getComponentInteractions.sparql");
+			query=String.format(query, componentDefURI.toString());
+		}
 		ResultSet rs=ts.executeSparql(query);
 		while (rs.hasNext())
 		{
@@ -82,7 +115,7 @@ public class SBOLStackHandler {
 	}
 	
 	public static SBOLDocument getInteractionDetailed(URI stackURI, URI interactionURI) throws VPRException {
-		String str2="";
+		
 		TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());
 		String query = ts.getSparqlQuery("getInteractionDetailed.sparql");
 		query = String.format(query, interactionURI.toString(),interactionURI.toString(),interactionURI.toString());
