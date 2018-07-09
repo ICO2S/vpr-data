@@ -8,3 +8,5 @@ target
 build
 bin
 .sbml
+jcs_swap
+*DS_Store

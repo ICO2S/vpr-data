@@ -35,6 +35,7 @@ import org.virtualparts.sbol.SBOLHandler;
 public class SBOLInteractionAdder_GeneCentric{
 	private URI endPointUrl=null;
 	private String rootModuleId=null;
+	private QueryParameters queryParameters=null;
 	
 	public SBOLInteractionAdder_GeneCentric(URI endPointUrl)
 	{
@@ -45,6 +46,13 @@ public class SBOLInteractionAdder_GeneCentric{
 	{
 		this(endPointUrl);
 		this.rootModuleId=rootModuleId;		
+	}
+	
+	public SBOLInteractionAdder_GeneCentric(URI endPointUrl, String rootModuleId, QueryParameters queryParameters)
+	{
+		this(endPointUrl);
+		this.rootModuleId=rootModuleId;		
+		this.queryParameters=queryParameters;
 	}
 	
 	private String getRootModuleId(List<ComponentDefinition> designs) throws VPRException
@@ -180,7 +188,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		List<ComponentDefinition> componentDefs=SBOLHandler.getComponentDefinitionsByRole(sbolDocument, role);
 		for (ComponentDefinition componentDef:componentDefs)
 		{
-			List<SBOLInteractionSummary> componentInteractions=SBOLStackHandler.getInteractions(componentDef.getIdentity(),this.endPointUrl);
+			List<SBOLInteractionSummary> componentInteractions=SBOLStackHandler.getInteractions(componentDef.getIdentity(),this.endPointUrl,this.queryParameters);
 			if (componentInteractions!=null && componentInteractions.size()>0)
 			{
 				interactions.putAll(componentDef.getIdentity(),componentInteractions);	
@@ -201,7 +209,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	
 	private void addProteinInteractions(URI proteinDefUri, MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException
 	{
-		List<SBOLInteractionSummary> proteinInteractions=SBOLStackHandler.getInteractions(proteinDefUri,this.endPointUrl);
+		List<SBOLInteractionSummary> proteinInteractions=SBOLStackHandler.getInteractions(proteinDefUri,this.endPointUrl,this.queryParameters);
 		if (proteinInteractions!=null)
 		{
 			interactions.putAll(proteinDefUri,proteinInteractions);		
@@ -221,7 +229,7 @@ public class SBOLInteractionAdder_GeneCentric{
 					{
 						if (interactions.getCollection(componentDefUri)==null)
 						{
-							List<SBOLInteractionSummary> dimerInteractions=SBOLStackHandler.getInteractions(componentDefUri,this.endPointUrl);
+							List<SBOLInteractionSummary> dimerInteractions=SBOLStackHandler.getInteractions(componentDefUri,this.endPointUrl,this.queryParameters);
 							if (dimerInteractions!=null)
 							{
 								interactions.putAll(componentDefUri,dimerInteractions);			

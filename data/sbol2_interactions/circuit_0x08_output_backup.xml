@@ -613,139 +613,262 @@
       </sbol:Module>
     </sbol:module>
   </sbol:ModuleDefinition>
-  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/1">
-    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module"/>
-    <sbol:displayId>circuit_0x08_0_YFP_module</sbol:displayId>
+  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/1">
+    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module"/>
+    <sbol:displayId>circuit_0x08_6_pBAD_module</sbol:displayId>
     <sbol:version>1</sbol:version>
     <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/circuit_0x08_0_YFP/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/circuit_0x08_0_YFP"/>
-        <sbol:displayId>circuit_0x08_0_YFP</sbol:displayId>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/circuit_0x08_6_pBAD/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/circuit_0x08_6_pBAD"/>
+        <sbol:displayId>circuit_0x08_6_pBAD</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP"/>
+        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD"/>
         <sbol:access rdf:resource="http://sbols.org/v2#private"/>
         <sbol:direction rdf:resource="http://sbols.org/v2#none"/>
       </sbol:FunctionalComponent>
     </sbol:functionalComponent>
     <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_protein/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_protein"/>
-        <sbol:displayId>PhlF_protein</sbol:displayId>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein"/>
+        <sbol:displayId>AraC_protein</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/PhlF_protein/1"/>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:direction rdf:resource="http://sbols.org/v2#in"/>
-      </sbol:FunctionalComponent>
-    </sbol:functionalComponent>
-    <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein"/>
-        <sbol:displayId>YFP_protein</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/YFP_protein/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/AraC_protein/1"/>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
         <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
       </sbol:FunctionalComponent>
     </sbol:functionalComponent>
     <sbol:interaction>
-      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression"/>
-        <sbol:displayId>PhlF_pPhlF_repression</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
-        <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/pPhlF_promoter_participation/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/pPhlF_promoter_participation"/>
-            <sbol:displayId>pPhlF_promoter_participation</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/circuit_0x08_0_YFP/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-        <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/PhlF_protein_participation/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/PhlF_protein_participation"/>
-            <sbol:displayId>PhlF_protein_participation</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_protein/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-      </sbol:Interaction>
-    </sbol:interaction>
-    <sbol:interaction>
-      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction"/>
-        <sbol:displayId>YFP_protein_interaction</sbol:displayId>
+      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction"/>
+        <sbol:displayId>AraC_protein_interaction</sbol:displayId>
         <sbol:version>1</sbol:version>
         <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/YFP_protein/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/YFP_protein"/>
-            <sbol:displayId>YFP_protein</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/AraC/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/AraC"/>
+            <sbol:displayId>AraC</sbol:displayId>
             <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/circuit_0x08_6_pBAD/1"/>
           </sbol:Participation>
         </sbol:participation>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/YFP/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/YFP"/>
-            <sbol:displayId>YFP</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/AraC_protein/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/AraC_protein"/>
+            <sbol:displayId>AraC_protein</sbol:displayId>
             <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/circuit_0x08_0_YFP/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein/1"/>
           </sbol:Participation>
         </sbol:participation>
       </sbol:Interaction>
     </sbol:interaction>
   </sbol:ModuleDefinition>
-  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/1">
-    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module"/>
-    <sbol:displayId>circuit_0x08_5_pTac_module</sbol:displayId>
+  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/1">
+    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module"/>
+    <sbol:displayId>circuit_0x08_1_P3_PhlF_module</sbol:displayId>
     <sbol:version>1</sbol:version>
     <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein"/>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF"/>
+        <sbol:displayId>circuit_0x08_1_P3_PhlF</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#none"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_protein/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_protein"/>
         <sbol:displayId>LacI_protein</sbol:displayId>
         <sbol:version>1</sbol:version>
         <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/LacI_protein/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#in"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_protein/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_protein"/>
+        <sbol:displayId>AmtR_protein</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/AmtR_protein/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#in"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein"/>
+        <sbol:displayId>PhlF_protein</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/PhlF_protein/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression"/>
+        <sbol:displayId>LacI_pTac_repression</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/pTac_promoter_participation/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/pTac_promoter_participation"/>
+            <sbol:displayId>pTac_promoter_participation</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/LacI_protein_participation/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/LacI_protein_participation"/>
+            <sbol:displayId>LacI_protein_participation</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_protein/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction"/>
+        <sbol:displayId>PhlF_protein_interaction</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/PhlF/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/PhlF"/>
+            <sbol:displayId>PhlF</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/PhlF_protein/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/PhlF_protein"/>
+            <sbol:displayId>PhlF_protein</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression"/>
+        <sbol:displayId>AmtR_pAmtR_repression</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/pAmtR_promoter_participation/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/pAmtR_promoter_participation"/>
+            <sbol:displayId>pAmtR_promoter_participation</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/AmtR_protein_participation/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/AmtR_protein_participation"/>
+            <sbol:displayId>AmtR_protein_participation</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_protein/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+  </sbol:ModuleDefinition>
+  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/1">
+    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module"/>
+    <sbol:displayId>circuit_0x08_4_B1_BM3R1_module</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein"/>
+        <sbol:displayId>BM3R1_protein</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/BM3R1_protein/1"/>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
         <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
       </sbol:FunctionalComponent>
     </sbol:functionalComponent>
     <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/circuit_0x08_5_pTac/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/circuit_0x08_5_pTac"/>
-        <sbol:displayId>circuit_0x08_5_pTac</sbol:displayId>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein"/>
+        <sbol:displayId>Ara_AraC_protein</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/Ara_AraC_protein/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#in"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/circuit_0x08_4_B1_BM3R1/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/circuit_0x08_4_B1_BM3R1"/>
+        <sbol:displayId>circuit_0x08_4_B1_BM3R1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1"/>
         <sbol:access rdf:resource="http://sbols.org/v2#private"/>
         <sbol:direction rdf:resource="http://sbols.org/v2#none"/>
       </sbol:FunctionalComponent>
     </sbol:functionalComponent>
     <sbol:interaction>
-      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction"/>
-        <sbol:displayId>LacI_protein_interaction</sbol:displayId>
+      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction"/>
+        <sbol:displayId>BM3R1_protein_interaction</sbol:displayId>
         <sbol:version>1</sbol:version>
         <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/LacI_protein/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/LacI_protein"/>
-            <sbol:displayId>LacI_protein</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/BM3R1/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/BM3R1"/>
+            <sbol:displayId>BM3R1</sbol:displayId>
             <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/circuit_0x08_4_B1_BM3R1/1"/>
           </sbol:Participation>
         </sbol:participation>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/LacI/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/LacI"/>
-            <sbol:displayId>LacI</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/BM3R1_protein/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/BM3R1_protein"/>
+            <sbol:displayId>BM3R1_protein</sbol:displayId>
             <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/circuit_0x08_5_pTac/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation"/>
+        <sbol:displayId>Ara_AraC_protein_pBAD_activation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/pBAD_promoter_participation/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/pBAD_promoter_participation"/>
+            <sbol:displayId>pBAD_promoter_participation</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/circuit_0x08_4_B1_BM3R1/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/Ara_AraC_protein_protein_participation/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/Ara_AraC_protein_protein_participation"/>
+            <sbol:displayId>Ara_AraC_protein_protein_participation</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein/1"/>
           </sbol:Participation>
         </sbol:participation>
       </sbol:Interaction>
@@ -869,57 +992,6 @@
             <sbol:version>1</sbol:version>
             <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
             <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_3_S3_SrpR_module/BM3R1_protein/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-      </sbol:Interaction>
-    </sbol:interaction>
-  </sbol:ModuleDefinition>
-  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/1">
-    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module"/>
-    <sbol:displayId>circuit_0x08_6_pBAD_module</sbol:displayId>
-    <sbol:version>1</sbol:version>
-    <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/circuit_0x08_6_pBAD/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/circuit_0x08_6_pBAD"/>
-        <sbol:displayId>circuit_0x08_6_pBAD</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD"/>
-        <sbol:access rdf:resource="http://sbols.org/v2#private"/>
-        <sbol:direction rdf:resource="http://sbols.org/v2#none"/>
-      </sbol:FunctionalComponent>
-    </sbol:functionalComponent>
-    <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein"/>
-        <sbol:displayId>AraC_protein</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/AraC_protein/1"/>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
-      </sbol:FunctionalComponent>
-    </sbol:functionalComponent>
-    <sbol:interaction>
-      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction"/>
-        <sbol:displayId>AraC_protein_interaction</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
-        <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/AraC/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/AraC"/>
-            <sbol:displayId>AraC</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/circuit_0x08_6_pBAD/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-        <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/AraC_protein/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein_interaction/AraC_protein"/>
-            <sbol:displayId>AraC_protein</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_6_pBAD_module/AraC_protein/1"/>
           </sbol:Participation>
         </sbol:participation>
       </sbol:Interaction>
@@ -1063,211 +1135,139 @@
       </sbol:Interaction>
     </sbol:interaction>
   </sbol:ModuleDefinition>
-  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/1">
-    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module"/>
-    <sbol:displayId>circuit_0x08_1_P3_PhlF_module</sbol:displayId>
+  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/1">
+    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module"/>
+    <sbol:displayId>circuit_0x08_5_pTac_module</sbol:displayId>
     <sbol:version>1</sbol:version>
     <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_protein/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_protein"/>
-        <sbol:displayId>LacI_protein</sbol:displayId>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/circuit_0x08_5_pTac/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/circuit_0x08_5_pTac"/>
+        <sbol:displayId>circuit_0x08_5_pTac</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/LacI_protein/1"/>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:direction rdf:resource="http://sbols.org/v2#in"/>
-      </sbol:FunctionalComponent>
-    </sbol:functionalComponent>
-    <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_protein/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_protein"/>
-        <sbol:displayId>AmtR_protein</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/AmtR_protein/1"/>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:direction rdf:resource="http://sbols.org/v2#in"/>
-      </sbol:FunctionalComponent>
-    </sbol:functionalComponent>
-    <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF"/>
-        <sbol:displayId>circuit_0x08_1_P3_PhlF</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF"/>
+        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac"/>
         <sbol:access rdf:resource="http://sbols.org/v2#private"/>
         <sbol:direction rdf:resource="http://sbols.org/v2#none"/>
       </sbol:FunctionalComponent>
     </sbol:functionalComponent>
     <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein"/>
-        <sbol:displayId>PhlF_protein</sbol:displayId>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein"/>
+        <sbol:displayId>LacI_protein</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/PhlF_protein/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/LacI_protein/1"/>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
         <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
       </sbol:FunctionalComponent>
     </sbol:functionalComponent>
     <sbol:interaction>
-      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression"/>
-        <sbol:displayId>LacI_pTac_repression</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
-        <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/pTac_promoter_participation/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/pTac_promoter_participation"/>
-            <sbol:displayId>pTac_promoter_participation</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-        <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/LacI_protein_participation/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_pTac_repression/LacI_protein_participation"/>
-            <sbol:displayId>LacI_protein_participation</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/LacI_protein/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-      </sbol:Interaction>
-    </sbol:interaction>
-    <sbol:interaction>
-      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction"/>
-        <sbol:displayId>PhlF_protein_interaction</sbol:displayId>
+      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction"/>
+        <sbol:displayId>LacI_protein_interaction</sbol:displayId>
         <sbol:version>1</sbol:version>
         <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/PhlF/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/PhlF"/>
-            <sbol:displayId>PhlF</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-        <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/PhlF_protein/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein_interaction/PhlF_protein"/>
-            <sbol:displayId>PhlF_protein</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/LacI_protein/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/LacI_protein"/>
+            <sbol:displayId>LacI_protein</sbol:displayId>
             <sbol:version>1</sbol:version>
             <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/PhlF_protein/1"/>
-          </sbol:Participation>
-        </sbol:participation>
-      </sbol:Interaction>
-    </sbol:interaction>
-    <sbol:interaction>
-      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression"/>
-        <sbol:displayId>AmtR_pAmtR_repression</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
-        <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/pAmtR_promoter_participation/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/pAmtR_promoter_participation"/>
-            <sbol:displayId>pAmtR_promoter_participation</sbol:displayId>
-            <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/circuit_0x08_1_P3_PhlF/1"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein/1"/>
           </sbol:Participation>
         </sbol:participation>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/AmtR_protein_participation/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_pAmtR_repression/AmtR_protein_participation"/>
-            <sbol:displayId>AmtR_protein_participation</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/LacI/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/LacI_protein_interaction/LacI"/>
+            <sbol:displayId>LacI</sbol:displayId>
             <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_1_P3_PhlF_module/AmtR_protein/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_5_pTac_module/circuit_0x08_5_pTac/1"/>
           </sbol:Participation>
         </sbol:participation>
       </sbol:Interaction>
     </sbol:interaction>
   </sbol:ModuleDefinition>
-  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/1">
-    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module"/>
-    <sbol:displayId>circuit_0x08_4_B1_BM3R1_module</sbol:displayId>
+  <sbol:ModuleDefinition rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/1">
+    <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module"/>
+    <sbol:displayId>circuit_0x08_0_YFP_module</sbol:displayId>
     <sbol:version>1</sbol:version>
     <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein"/>
-        <sbol:displayId>BM3R1_protein</sbol:displayId>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/circuit_0x08_0_YFP/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/circuit_0x08_0_YFP"/>
+        <sbol:displayId>circuit_0x08_0_YFP</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/BM3R1_protein/1"/>
-        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
-        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
-      </sbol:FunctionalComponent>
-    </sbol:functionalComponent>
-    <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/circuit_0x08_4_B1_BM3R1/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/circuit_0x08_4_B1_BM3R1"/>
-        <sbol:displayId>circuit_0x08_4_B1_BM3R1</sbol:displayId>
-        <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1"/>
+        <sbol:definition rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP"/>
         <sbol:access rdf:resource="http://sbols.org/v2#private"/>
         <sbol:direction rdf:resource="http://sbols.org/v2#none"/>
       </sbol:FunctionalComponent>
     </sbol:functionalComponent>
     <sbol:functionalComponent>
-      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein"/>
-        <sbol:displayId>Ara_AraC_protein</sbol:displayId>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_protein/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_protein"/>
+        <sbol:displayId>PhlF_protein</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/Ara_AraC_protein/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/PhlF_protein/1"/>
         <sbol:access rdf:resource="http://sbols.org/v2#public"/>
         <sbol:direction rdf:resource="http://sbols.org/v2#in"/>
       </sbol:FunctionalComponent>
     </sbol:functionalComponent>
-    <sbol:interaction>
-      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction"/>
-        <sbol:displayId>BM3R1_protein_interaction</sbol:displayId>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein"/>
+        <sbol:displayId>YFP_protein</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/YFP_protein/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression"/>
+        <sbol:displayId>PhlF_pPhlF_repression</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/BM3R1/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/BM3R1"/>
-            <sbol:displayId>BM3R1</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/pPhlF_promoter_participation/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/pPhlF_promoter_participation"/>
+            <sbol:displayId>pPhlF_promoter_participation</sbol:displayId>
             <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/circuit_0x08_4_B1_BM3R1/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/circuit_0x08_0_YFP/1"/>
           </sbol:Participation>
         </sbol:participation>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/BM3R1_protein/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein_interaction/BM3R1_protein"/>
-            <sbol:displayId>BM3R1_protein</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/PhlF_protein_participation/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_pPhlF_repression/PhlF_protein_participation"/>
+            <sbol:displayId>PhlF_protein_participation</sbol:displayId>
             <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/BM3R1_protein/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/PhlF_protein/1"/>
           </sbol:Participation>
         </sbol:participation>
       </sbol:Interaction>
     </sbol:interaction>
     <sbol:interaction>
-      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/1">
-        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation"/>
-        <sbol:displayId>Ara_AraC_protein_pBAD_activation</sbol:displayId>
+      <sbol:Interaction rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/1">
+        <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction"/>
+        <sbol:displayId>YFP_protein_interaction</sbol:displayId>
         <sbol:version>1</sbol:version>
-        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/pBAD_promoter_participation/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/pBAD_promoter_participation"/>
-            <sbol:displayId>pBAD_promoter_participation</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/YFP_protein/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/YFP_protein"/>
+            <sbol:displayId>YFP_protein</sbol:displayId>
             <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/circuit_0x08_4_B1_BM3R1/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein/1"/>
           </sbol:Participation>
         </sbol:participation>
         <sbol:participation>
-          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/Ara_AraC_protein_protein_participation/1">
-            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein_pBAD_activation/Ara_AraC_protein_protein_participation"/>
-            <sbol:displayId>Ara_AraC_protein_protein_participation</sbol:displayId>
+          <sbol:Participation rdf:about="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/YFP/1">
+            <sbol:persistentIdentity rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/YFP_protein_interaction/YFP"/>
+            <sbol:displayId>YFP</sbol:displayId>
             <sbol:version>1</sbol:version>
-            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
-            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_4_B1_BM3R1_module/Ara_AraC_protein/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
+            <sbol:participant rdf:resource="http://cellocad.org/v2/circuit_0x08_0_YFP_module/circuit_0x08_0_YFP/1"/>
           </sbol:Participation>
         </sbol:participation>
       </sbol:Interaction>
