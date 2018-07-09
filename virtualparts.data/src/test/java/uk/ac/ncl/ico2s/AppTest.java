@@ -171,7 +171,7 @@ public class AppTest
 	 }
     }
     
-    public void untestPopulateWithInteractionsInverterDesign_CollectionFilter() throws Exception
+    public void testPopulateWithInteractionsInverterDesign_CollectionFilter() throws Exception
     {
 	 try
 	 {
@@ -272,7 +272,7 @@ public class AppTest
 	 }
     }
     
-    public void testCache() throws Exception
+    public void un_testCache() throws Exception
     {
 	 try
 	 {
