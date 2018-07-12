@@ -52,7 +52,39 @@ public class AppTest
         assertTrue( true );
     }
  
-   
+    public void testPopulateWithInteractionsInverterDesign_TUs_public() throws Exception
+    {
+	 try
+	 {
+		SBOLDocument doc=new SBOLDocument();
+	    String base="https://synbiohub.org/public/bsu/";
+	    doc.setDefaultURIprefix(base);
+	   
+	    //Designs
+	    String design1="BO_27661:prom;BO_27783:rbs;BO_32077:cds;BO_4257:ter";
+	    String design2="BO_27632:prom;BO_27783:rbs;BO_31554:cds;BO_4257:ter";
+	    
+	    
+	    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, design1), "design1");
+	    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, design2), "design2");
+	    
+	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "inverterExample_TUs_public.xml")); 
+		    
+	    	
+		 
+		//SBOLDocument doc=SBOLReader.read(new File(getOutputDir() + "/" + "my_NegativeAutoRegulatoryDesign.xml"));
+		SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint),"newDesign",null, true);
+		interactionAdder.addInteractions(doc);    	 	   
+	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "inverterExample_TUs_public_output.xml")); 
+	
+	 }
+	 catch (Exception e)
+	 {
+		 e.printStackTrace();
+		 throw e;
+	 }
+    }
+    
 
     
     public void un_testPopulateWithInteractionsNegativeAutoRegulatoryDesign() throws Exception
@@ -171,7 +203,7 @@ public class AppTest
 	 }
     }
     
-    public void testPopulateWithInteractionsInverterDesign_CollectionFilter() throws Exception
+    public void untestPopulateWithInteractionsInverterDesign_CollectionFilter() throws Exception
     {
 	 try
 	 {
@@ -263,6 +295,29 @@ public class AppTest
 		SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint),"newDesign",params);
 		interactionAdder.addInteractions(doc);    	 	   
 	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "circuit_0x08_output.xml")); 
+	
+	 }
+	 catch (Exception e)
+	 {
+		 e.printStackTrace();
+		 throw e;
+	 }
+    }
+    
+    public void un_testCircuit08_publicTUs() throws Exception
+    {
+	 try
+	 {
+		SBOLDocument doc=SBOLReader.read(TestUtils.getOutputDir() + "circuit_0x08_input.xml");
+		String endpoint="https://synbiohub.programmingbiology.org/sparql"; 
+		List<URI> collections=new ArrayList<URI>();
+	    collections.add(new URI("https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/Model_consensus_collection/1"));
+	    QueryParameters params=new QueryParameters();
+	    params.setCollectionURIs(collections);
+		//SBOLDocument doc=SBOLReader.read(new File(getOutputDir() + "/" + "my_NegativeAutoRegulatoryDesign.xml"));
+		SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint),"newDesign",params);
+		interactionAdder.addInteractions(doc);    	 	   
+	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "circuit_0x08_publicTUs_output.xml")); 
 	
 	 }
 	 catch (Exception e)

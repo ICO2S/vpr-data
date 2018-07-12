@@ -28,6 +28,7 @@ import org.sbolstandard.core2.SBOLValidationException;
 import org.sbolstandard.core2.SequenceAnnotation;
 import org.sbolstandard.core2.SequenceOntology;
 import org.sbolstandard.core2.SystemsBiologyOntology;
+import org.sbolstandard.examples.Sbol2Terms.component;
 import org.virtualparts.VPRException;
 import org.virtualparts.VPRTripleStoreException;
 import org.virtualparts.data.Cacher;
@@ -558,14 +559,16 @@ public class SBOLInteractionAdder_GeneCentric{
 	private void linkComponent(ModuleDefinition moduleDef, ComponentDefinition design, ComponentDefinition compDef) throws SBOLValidationException
 	{
 		FunctionalComponent fcDesign=getFunctionalComponent(moduleDef, design.getIdentity());
-		FunctionalComponent fcComponent=getFunctionalComponent(moduleDef, compDef.getIdentity());
+		FunctionalComponent fcComponent=getFunctionalComponent(moduleDef, compDef.getIdentity());		
 		List<Component> uses=new ArrayList<Component>();
 		findUses(uses, design, compDef);
 		int i=1;
-		for (Component component: uses);
+		
+		for (Component component: uses)
 		{
 			MapsTo mapsTo=fcDesign.getMapsTo(compDef.getDisplayId() + "_mapsTo_" + i++);
 			if (mapsTo==null) {
+				
 				fcDesign.createMapsTo(compDef.getDisplayId() + "_mapsTo", RefinementType.USELOCAL, fcComponent.getIdentity(), component.getIdentity());
 			}
 		}

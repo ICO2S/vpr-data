@@ -36,6 +36,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	private URI endPointUrl=null;
 	private String rootModuleId=null;
 	private QueryParameters queryParameters=null;
+	private boolean designsPublicAccess=false;
 	
 	public SBOLInteractionAdder_GeneCentric(URI endPointUrl)
 	{
@@ -54,6 +55,15 @@ public class SBOLInteractionAdder_GeneCentric{
 		this.rootModuleId=rootModuleId;		
 		this.queryParameters=queryParameters;
 	}
+	
+	public SBOLInteractionAdder_GeneCentric(URI endPointUrl, String rootModuleId, QueryParameters queryParameters, boolean designsPublicAccess)
+	{
+		this(endPointUrl);
+		this.rootModuleId=rootModuleId;		
+		this.queryParameters=queryParameters;
+		this.designsPublicAccess=true;
+	}
+	
 	
 	private String getRootModuleId(List<ComponentDefinition> designs) throws VPRException
 	{
@@ -468,29 +478,51 @@ public class SBOLInteractionAdder_GeneCentric{
 	{
 		for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
 		{				
-			DirectionType direction=DirectionType.NONE;
-			AccessType access=AccessType.PRIVATE;	
+			DirectionType direction = DirectionType.NONE;
+			AccessType access = AccessType.PRIVATE;
 			if (!fComp.getDefinition().containsType(ComponentDefinition.DNA))
-			{					
-					access=AccessType.PUBLIC;
-					if (hasRole(moduleDef, fComp, SystemsBiologyOntology.PRODUCT))
-					{
-						direction=DirectionType.INOUT;			
-					}
-					else
-					{
-						direction=DirectionType.IN;										
-					}		
-				}
-			
-			if (direction==DirectionType.IN )
 			{
-				if (existAsOutInSubModules(moduleDef, fComp))
+				access = AccessType.PUBLIC;
+				if (hasRole(moduleDef, fComp, SystemsBiologyOntology.PRODUCT))
 				{
-					direction=DirectionType.INOUT;
+					direction = DirectionType.INOUT;
+				} else {
+					direction = DirectionType.IN;
 				}
 			}
+			else if (this.designsPublicAccess)//To make fc's that represent designs public
+			{
+				boolean makePublic=false;
+				if (existAsOutInSubModules(moduleDef, fComp)) 
+				{
+					makePublic=true;
+				}
+				else if (fComp.getDefinition().containsRole(SequenceOntology.ENGINEERED_REGION))
+				{
+					List<Interaction> engineeredGeneInteractions=getInteractions(moduleDef, fComp);
+					if (engineeredGeneInteractions!=null && engineeredGeneInteractions.size()>0)
+					{
+						makePublic=true;
+					}
+				}
+				if (makePublic)
+				{
+					direction=DirectionType.INOUT;
+					access=AccessType.PUBLIC;
+				}
+			}
+
+			if (direction == DirectionType.IN)
+			{
+				if (existAsOutInSubModules(moduleDef, fComp)) 
+				{
+					direction = DirectionType.INOUT;
+				}
+				// access=AccessType.PUBLIC;
+			}
 			
+			
+
 			fComp.setDirection(direction);
 			fComp.setAccess(access);		
 		}
