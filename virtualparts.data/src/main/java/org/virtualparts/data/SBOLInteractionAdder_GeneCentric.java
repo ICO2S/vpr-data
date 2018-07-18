@@ -189,7 +189,12 @@ public class SBOLInteractionAdder_GeneCentric{
 	{
 		MultiValueMap<URI, SBOLInteractionSummary> interactions=new MultiValueMap<URI, SBOLInteractionSummary>();		
 		addInteractions(sbolDocument,  SequenceOntology.CDS, interactions);
-		addInteractions(sbolDocument,  SequenceOntology.PROMOTER, interactions);													
+		addInteractions(sbolDocument,  SequenceOntology.PROMOTER, interactions);	
+		addInteractions(sbolDocument,  SequenceOntology.OPERATOR, interactions);
+		addInteractions(sbolDocument,  URI.create("http://identifiers.org/so/SO:0001263"), interactions);	
+		addInteractions(sbolDocument,  URI.create("http://identifiers.org/so/SO:0001264"), interactions);	
+		
+		
 		return interactions;
 	}
 	
@@ -389,7 +394,7 @@ public class SBOLInteractionAdder_GeneCentric{
 					//If the sub module does not exist, create the sub module
 					if (subModule==null)
 					{
-						subModule=parentModuleDef.createModule(parentModuleDef.getDisplayId() + "_" +  moduleDef.getDisplayId() + "_sub", moduleDef.getDisplayId(), "1");
+						subModule=parentModuleDef.createModule(parentModuleDef.getDisplayId() + "_" +  moduleDef.getDisplayId() + "_sub", moduleDef.getIdentity());
 					}						
 					MapsTo mapsTo=getMapsTo(subModule, parentFComp, fComp);
 					//If the mapping does not exist already, create the mapsTo entity

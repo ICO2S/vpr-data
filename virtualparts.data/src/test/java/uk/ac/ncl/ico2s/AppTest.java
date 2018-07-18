@@ -52,7 +52,9 @@ public class AppTest
         assertTrue( true );
     }
  
-    public void testPopulateWithInteractionsInverterDesign_TUs_public() throws Exception
+   
+    
+    public void un_testPopulateWithInteractionsInverterDesign_TUs_public() throws Exception
     {
 	 try
 	 {

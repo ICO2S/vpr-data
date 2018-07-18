@@ -1,0 +1,576 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sbol="http://sbols.org/v2#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/UWYeast1/r7/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r7"/>
+    <sbol:displayId>r7</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>r7</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r7/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000057"/>
+    <sbol:sequence rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r7_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/UWYeast1/RGR_19_grna/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/RGR_19_grna"/>
+    <sbol:displayId>RGR_19_grna</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>RGR_19_grna</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/RGR_19_grna/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001264"/>
+    <sbol:sequence rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/RGR_19_grna_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://async.ece.utah.edu/Nor/1">
+    <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor"/>
+    <sbol:displayId>Nor</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="http://async.ece.utah.edu/Nor_SBOLDesignerActivity/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://async.ece.utah.edu/Nor/CDS_Component/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/CDS_Component"/>
+        <sbol:displayId>CDS_Component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/RGR_19_grna/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://async.ece.utah.edu/Nor/RBS_Component/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/RBS_Component"/>
+        <sbol:displayId>RBS_Component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/Kozak/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://async.ece.utah.edu/Nor/Pro_Component/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Pro_Component"/>
+        <sbol:displayId>Pro_Component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/tss/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://async.ece.utah.edu/Nor/NGA_Component/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/NGA_Component"/>
+        <sbol:displayId>NGA_Component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/UAS/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://async.ece.utah.edu/Nor/NGA1_Component/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/NGA1_Component"/>
+        <sbol:displayId>NGA1_Component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/LinkingSequence/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://async.ece.utah.edu/Nor/Op_Component/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Op_Component"/>
+        <sbol:displayId>Op_Component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r7/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://async.ece.utah.edu/Nor/NGA2_Component/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/NGA2_Component"/>
+        <sbol:displayId>NGA2_Component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/TataBox/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://async.ece.utah.edu/Nor/Op1_Component/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Op1_Component"/>
+        <sbol:displayId>Op1_Component</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r5/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation6/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation6"/>
+        <sbol:displayId>Nor_SequenceAnnotation6</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation6/Nor_SequenceAnnotation6_Range/1">
+            <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation6/Nor_SequenceAnnotation6_Range"/>
+            <sbol:displayId>Nor_SequenceAnnotation6_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:start>537</sbol:start>
+            <sbol:end>560</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://async.ece.utah.edu/Nor/NGA1_Component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation5/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation5"/>
+        <sbol:displayId>Nor_SequenceAnnotation5</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation5/Nor_SequenceAnnotation5_Range/1">
+            <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation5/Nor_SequenceAnnotation5_Range"/>
+            <sbol:displayId>Nor_SequenceAnnotation5_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:start>1</sbol:start>
+            <sbol:end>536</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://async.ece.utah.edu/Nor/NGA_Component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation2/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation2"/>
+        <sbol:displayId>Nor_SequenceAnnotation2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation2/Nor_SequenceAnnotation2_Range/1">
+            <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation2/Nor_SequenceAnnotation2_Range"/>
+            <sbol:displayId>Nor_SequenceAnnotation2_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:start>642</sbol:start>
+            <sbol:end>661</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://async.ece.utah.edu/Nor/Op1_Component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation"/>
+        <sbol:displayId>Nor_SequenceAnnotation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation/Nor_SequenceAnnotation_Range/1">
+            <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation/Nor_SequenceAnnotation_Range"/>
+            <sbol:displayId>Nor_SequenceAnnotation_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:start>750</sbol:start>
+            <sbol:end>1059</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://async.ece.utah.edu/Nor/CDS_Component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation1/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation1"/>
+        <sbol:displayId>Nor_SequenceAnnotation1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation1/Nor_SequenceAnnotation1_Range/1">
+            <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation1/Nor_SequenceAnnotation1_Range"/>
+            <sbol:displayId>Nor_SequenceAnnotation1_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:start>561</sbol:start>
+            <sbol:end>580</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://async.ece.utah.edu/Nor/Op_Component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation4/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation4"/>
+        <sbol:displayId>Nor_SequenceAnnotation4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation4/Nor_SequenceAnnotation4_Range/1">
+            <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation4/Nor_SequenceAnnotation4_Range"/>
+            <sbol:displayId>Nor_SequenceAnnotation4_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:start>747</sbol:start>
+            <sbol:end>749</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://async.ece.utah.edu/Nor/RBS_Component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation3/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation3"/>
+        <sbol:displayId>Nor_SequenceAnnotation3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation3/Nor_SequenceAnnotation3_Range/1">
+            <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation3/Nor_SequenceAnnotation3_Range"/>
+            <sbol:displayId>Nor_SequenceAnnotation3_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:start>662</sbol:start>
+            <sbol:end>746</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://async.ece.utah.edu/Nor/Pro_Component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation7/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation7"/>
+        <sbol:displayId>Nor_SequenceAnnotation7</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation7/Nor_SequenceAnnotation7_Range/1">
+            <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceAnnotation7/Nor_SequenceAnnotation7_Range"/>
+            <sbol:displayId>Nor_SequenceAnnotation7_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:start>581</sbol:start>
+            <sbol:end>641</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://async.ece.utah.edu/Nor/NGA2_Component/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint5/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint5"/>
+        <sbol:displayId>Nor_SequenceConstraint5</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://async.ece.utah.edu/Nor/Pro_Component/1"/>
+        <sbol:object rdf:resource="http://async.ece.utah.edu/Nor/RBS_Component/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint1/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint1"/>
+        <sbol:displayId>Nor_SequenceConstraint1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://async.ece.utah.edu/Nor/NGA1_Component/1"/>
+        <sbol:object rdf:resource="http://async.ece.utah.edu/Nor/Op_Component/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint"/>
+        <sbol:displayId>Nor_SequenceConstraint</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://async.ece.utah.edu/Nor/NGA_Component/1"/>
+        <sbol:object rdf:resource="http://async.ece.utah.edu/Nor/NGA1_Component/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint3/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint3"/>
+        <sbol:displayId>Nor_SequenceConstraint3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://async.ece.utah.edu/Nor/NGA2_Component/1"/>
+        <sbol:object rdf:resource="http://async.ece.utah.edu/Nor/Op1_Component/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint4/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint4"/>
+        <sbol:displayId>Nor_SequenceConstraint4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://async.ece.utah.edu/Nor/Op1_Component/1"/>
+        <sbol:object rdf:resource="http://async.ece.utah.edu/Nor/Pro_Component/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint6/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint6"/>
+        <sbol:displayId>Nor_SequenceConstraint6</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://async.ece.utah.edu/Nor/RBS_Component/1"/>
+        <sbol:object rdf:resource="http://async.ece.utah.edu/Nor/CDS_Component/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint2/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor/Nor_SequenceConstraint2"/>
+        <sbol:displayId>Nor_SequenceConstraint2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://async.ece.utah.edu/Nor/Op_Component/1"/>
+        <sbol:object rdf:resource="http://async.ece.utah.edu/Nor/NGA2_Component/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequence rdf:resource="http://async.ece.utah.edu/NorSequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/UWYeast1/tss/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/tss"/>
+    <sbol:displayId>tss</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>tss</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/tss/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000315"/>
+    <sbol:sequence rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/tss_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/UWYeast1/UAS/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/UAS"/>
+    <sbol:displayId>UAS</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>UAS</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/UAS/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001678"/>
+    <sbol:sequence rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/UAS_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/UWYeast1/Kozak/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/Kozak"/>
+    <sbol:displayId>Kozak</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>Kozak</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/Kozak/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001647"/>
+    <sbol:sequence rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/Kozak_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/UWYeast1/TataBox/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/TataBox"/>
+    <sbol:displayId>TataBox</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>TataBox</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/TataBox/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000174"/>
+    <sbol:sequence rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/TataBox_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/UWYeast1/r5/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r5"/>
+    <sbol:displayId>r5</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>r5</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r5/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000057"/>
+    <sbol:sequence rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r5_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.utah.edu/public/UWYeast1/LinkingSequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/LinkingSequence"/>
+    <sbol:displayId>LinkingSequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>LinkingSequence</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/LinkingSequence/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001678"/>
+    <sbol:sequence rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/LinkingSequence_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.utah.edu/public/UWYeast1/r5_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r5_sequence"/>
+    <sbol:displayId>r5_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>r5_sequence</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r5_sequence/1"/>
+    <sbol:elements>GAAGTCAGTTGACAGAGTCG</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.utah.edu/public/UWYeast1/RGR_19_grna_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/RGR_19_grna_sequence"/>
+    <sbol:displayId>RGR_19_grna_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>RGR_19_grna_sequence</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/RGR_19_grna_sequence/1"/>
+    <sbol:elements>ggattctagaactagtggatctacaaaTTTACACAGTGGGACGGGCCATCATCTATCCCTGAAGAGACGAAGGCTTCGGCCAAGTCGAAACGGAAACGTCGGATAGTCGCCCGTCCCACACGTAAAAGATAACTCTGTTGCgttttagagctagaaatagcaagttaaaataaggctagtccgttatcaacttgaaaaagtggcaccgagtcggtgcttttggccggcatggtcccagcctcctcgctggcgccggctgggcaacatgcttcggcatggcgaatgggactgataccgtcgacctcgagtc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://async.ece.utah.edu/NorSequence/1">
+    <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/NorSequence"/>
+    <sbol:displayId>NorSequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="http://async.ece.utah.edu/Nor_SBOLDesignerActivity/1"/>
+    <sbol:elements>agtttatcattatcaatactcgccatttcaaagaatacgtaaataattaatagtagtgattttcctaactttatttagtcaaaaaattagccttttaattctgctgtaacccgtacatgcccaaaatagggggcgggttacacagaatatataacatcgtaggtgtctgggtgaacagtttattcctggcatccactaaatataatggagcccgctttttaagctggcatccagaaaaaaaaagaatcccagcaccaaaatattgttttcttcaccaaccatcagttcataggtccattctcttagcgcaactacagagaacaggggcacaaacaggcaaaaaacgggcacaacctcaatggagtgatgcaacctgcctggagtaaatgatgacacaaggcaattgacccacgcatgtatctatctcattttcttacaccttctattaccttctgctctctctgatttggaaaaagctgaaaaaaaaggttgaaaccagttccctgaaattattcccctacttgactaataagtaaattcctgcagcccgggtactgtatCTTTACGTATAGGTTTAGAGcatgcatgtgctctgtatgtatataaaactcttgttttcttcttttctctaaatattctttGAAGTCAGTTGACAGAGTCGgcataaattactatacttctatagacacacaaacacaaatacacacactaatctagatattggattctagaactagtggatctacaaaggattctagaactagtggatctacaaaTTTACACAGTGGGACGGGCCATCATCTATCCCTGAAGAGACGAAGGCTTCGGCCAAGTCGAAACGGAAACGTCGGATAGTCGCCCGTCCCACACGTAAAAGATAACTCTGTTGCgttttagagctagaaatagcaagttaaaataaggctagtccgttatcaacttgaaaaagtggcaccgagtcggtgcttttggccggcatggtcccagcctcctcgctggcgccggctgggcaacatgcttcggcatggcgaatgggactgataccgtcgacctcgagtc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.utah.edu/public/UWYeast1/UAS_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/UAS_sequence"/>
+    <sbol:displayId>UAS_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>UAS_sequence</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/UAS_sequence/1"/>
+    <sbol:elements>agtttatcattatcaatactcgccatttcaaagaatacgtaaataattaatagtagtgattttcctaactttatttagtcaaaaaattagccttttaattctgctgtaacccgtacatgcccaaaatagggggcgggttacacagaatatataacatcgtaggtgtctgggtgaacagtttattcctggcatccactaaatataatggagcccgctttttaagctggcatccagaaaaaaaaagaatcccagcaccaaaatattgttttcttcaccaaccatcagttcataggtccattctcttagcgcaactacagagaacaggggcacaaacaggcaaaaaacgggcacaacctcaatggagtgatgcaacctgcctggagtaaatgatgacacaaggcaattgacccacgcatgtatctatctcattttcttacaccttctattaccttctgctctctctgatttggaaaaagctgaaaaaaaaggttgaaaccagttccctgaaattattcccctacttgactaataagtaa</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.utah.edu/public/UWYeast1/r7_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r7_sequence"/>
+    <sbol:displayId>r7_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>r7_sequence</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/r7_sequence/1"/>
+    <sbol:elements>CTTTACGTATAGGTTTAGAG</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.utah.edu/public/UWYeast1/Kozak_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/Kozak_sequence"/>
+    <sbol:displayId>Kozak_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>Kozak_sequence</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/Kozak_sequence/1"/>
+    <sbol:elements>aaa</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.utah.edu/public/UWYeast1/tss_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/tss_sequence"/>
+    <sbol:displayId>tss_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>tss_sequence</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/tss_sequence/1"/>
+    <sbol:elements>gcataaattactatacttctatagacacacaaacacaaatacacacactaatctagatattggattctagaactagtggatctac</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.utah.edu/public/UWYeast1/TataBox_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/TataBox_sequence"/>
+    <sbol:displayId>TataBox_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>TataBox_sequence</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/TataBox_sequence/1"/>
+    <sbol:elements>catgcatgtgctctgtatgtatataaaactcttgttttcttcttttctctaaatattcttt</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.utah.edu/public/UWYeast1/LinkingSequence_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/LinkingSequence_sequence"/>
+    <sbol:displayId>LinkingSequence_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>LinkingSequence_sequence</dcterms:title>
+    <dcterms:created>2018-07-14T00:14:39.131Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/LinkingSequence_sequence/1"/>
+    <sbol:elements>attcctgcagcccgggtactgtat</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <prov:Activity rdf:about="http://async.ece.utah.edu/Nor_SBOLDesignerActivity/1">
+    <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor_SBOLDesignerActivity"/>
+    <sbol:displayId>Nor_SBOLDesignerActivity</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dc:creator>Chris Myers</dc:creator>
+    <prov:endedAtTime>2018-07-13T18:20:49.130-06:00</prov:endedAtTime>
+    <prov:qualifiedAssociation>
+      <prov:Association rdf:about="http://async.ece.utah.edu/Nor_SBOLDesignerActivity/Association/1">
+        <sbol:persistentIdentity rdf:resource="http://async.ece.utah.edu/Nor_SBOLDesignerActivity/Association"/>
+        <sbol:displayId>Association</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <prov:hadRole rdf:resource="http://sbols.org/v2#sequenceEditor"/>
+        <prov:agent rdf:resource="https://synbiohub.org/public/SBOL_Software/SBOLDesigner/3.0"/>
+      </prov:Association>
+    </prov:qualifiedAssociation>
+  </prov:Activity>
+  <prov:Activity rdf:about="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity"/>
+    <sbol:displayId>CelloUCF2sbol_Activity</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Cello UCF to SBOL conversion</dcterms:title>
+    <dcterms:description>Conversion of the Cello UCF parts and metadata to SBOL 2 documents.</dcterms:description>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+    <prov:endedAtTime>2018-07-13T18:14:39.154-06:00</prov:endedAtTime>
+    <prov:qualifiedAssociation>
+      <prov:Association rdf:about="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/association/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/association"/>
+        <sbol:displayId>association</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+        <prov:agent rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2SBOL/1"/>
+      </prov:Association>
+    </prov:qualifiedAssociation>
+    <prov:qualifiedUsage>
+      <prov:Usage rdf:about="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/UCF_file/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/UCF_file"/>
+        <sbol:displayId>UCF_file</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2sbol_Activity/1"/>
+        <prov:entity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/attachment_00009YcXArTq5elHMvKo9Q/1"/>
+      </prov:Usage>
+    </prov:qualifiedUsage>
+  </prov:Activity>
+  <prov:Agent rdf:about="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2SBOL/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2SBOL"/>
+    <sbol:displayId>CelloUCF2SBOL</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Cello UCF to SBOL</dcterms:title>
+    <dcterms:description>A script to convert Cello UCF parts and metadata to SBOL 2 documents.</dcterms:description>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/CelloUCF2SBOL/1"/>
+    <dc:creator>Chris J. Myers</dc:creator>
+    <dc:creator>Prashant Vaidyanathan</dc:creator>
+    <dc:source rdf:resource="https://github.com/MyersResearchGroup/UCF2SBOL"/>
+  </prov:Agent>
+  <sbol:Attachment rdf:about="https://synbiohub.utah.edu/public/UWYeast1/attachment_00009YcXArTq5elHMvKo9Q/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/attachment_00009YcXArTq5elHMvKo9Q"/>
+    <sbol:displayId>attachment_00009YcXArTq5elHMvKo9Q</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>UWYeast1.UCF.json</dcterms:title>
+    <sbh:ownedBy rdf:resource="https://synbiohub.utah.edu/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/attachment_00009YcXArTq5elHMvKo9Q/1"/>
+    <sbol:source rdf:resource="https://synbiohub.utah.edu/public/UWYeast1/attachment_00009YcXArTq5elHMvKo9Q/1/download"/>
+    <sbol:format rdf:resource="http://purl.org/NET/mediatypes/text/plain"/>
+    <sbol:size>31797</sbol:size>
+    <sbol:hash>6df19150f19aabb6b73c7eb9041e1165c629cb19</sbol:hash>
+  </sbol:Attachment>
+</rdf:RDF>

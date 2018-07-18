@@ -183,7 +183,10 @@ public class SBOLInteractionAdder_GeneCentric{
 	{
 		MultiValueMap<URI, SBOLInteractionSummary> interactions=new MultiValueMap<URI, SBOLInteractionSummary>();		
 		addInteractions(sbolDocument,  SequenceOntology.CDS, interactions);
-		addInteractions(sbolDocument,  SequenceOntology.PROMOTER, interactions);													
+		addInteractions(sbolDocument,  SequenceOntology.PROMOTER, interactions);	
+		addInteractions(sbolDocument,  SequenceOntology.OPERATOR, interactions);
+		addInteractions(sbolDocument,  URI.create("http://identifiers.org/so/SO:0001263"), interactions);	
+		addInteractions(sbolDocument,  URI.create("http://identifiers.org/so/SO:0001264"), interactions);
 		return interactions;
 	}
 	
@@ -271,7 +274,7 @@ public class SBOLInteractionAdder_GeneCentric{
 					//If the sub module does not exist, create the sub module
 					if (subModule==null)
 					{
-						subModule=parentModuleDef.createModule(parentModuleDef.getDisplayId() + "_" +  moduleDef.getDisplayId() + "_sub", moduleDef.getDisplayId(), "1");
+						subModule=parentModuleDef.createModule(parentModuleDef.getDisplayId() + "_" +  moduleDef.getDisplayId() + "_sub", moduleDef.getIdentity());
 					}						
 					MapsTo mapsTo=getMapsTo(subModule, parentFComp, fComp);
 					//If the mapping does not exist already, create the mapsTo entity
@@ -436,6 +439,25 @@ public class SBOLInteractionAdder_GeneCentric{
 		return sbolInteractionDocument;
 	}
 	
+	Set<URI> processedInteractions=new HashSet<URI>();
+	
+	private ModuleDefinition getModuleDefinitionByInteraction(SBOLDocument document, URI interactionUri)
+	{
+	   if (document.getModuleDefinitions()!=null)
+	   {
+		   for (ModuleDefinition moduleDef:document.getModuleDefinitions())
+		   {
+			   
+			   if (moduleDef.getInteraction(interactionUri)!=null)
+			   {
+				   return moduleDef;
+			   }
+		   }
+	   }
+		return null;
+	}
+
+
 	private void addNonDnaInteractions(SBOLDocument document, ModuleDefinition moduleDef,Set<URI> compDefURIs,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		for (URI uri:compDefURIs)
@@ -445,30 +467,38 @@ public class SBOLInteractionAdder_GeneCentric{
 			{
 				for (SBOLInteractionSummary participantInteractionSummary:participantInteractions)
 				{								
-					String displayId=SBOLHandler.getDisplayId(uri.toString());
-					if (moduleDef.getInteraction(displayId)==null)
+					ModuleDefinition interactionModuleDef=getModuleDefinitionByInteraction(document, participantInteractionSummary.getUri());
+					if (interactionModuleDef==null)
 					{
 						SBOLDocument sbolInteractionDocument=getInteractionDetail(participantInteractionSummary, uri);
+						ModuleDefinition sourceInteractionModuleDef=sbolInteractionDocument.getModuleDefinitions().iterator().next();
+						System.out.println("MD_Interaction:" +  sourceInteractionModuleDef.getIdentity());
+						Interaction sourceInteraction=sbolInteractionDocument.getModuleDefinitions().iterator().next().getInteractions().iterator().next();
 						
-						Interaction interaction=sbolInteractionDocument.getModuleDefinitions().iterator().next().getInteractions().iterator().next();
-						if (moduleDef.getInteraction(interaction.getDisplayId())==null)
+						boolean hasDnaParticipant=hasDnaParticipant(sbolInteractionDocument, moduleDef, sourceInteraction);
+						if (!hasDnaParticipant)
 						{
-							boolean hasDnaParticipant=hasDnaParticipant(sbolInteractionDocument, moduleDef, interaction);
-							if (!hasDnaParticipant)
-							{
-								//DNA interactions are already added.
-								addInteraction(sbolInteractionDocument, moduleDef, sbolInteractionDocument, null, null);
-								if (interaction.containsType(SystemsBiologyOntology.NON_COVALENT_BINDING))
-								{													
-									addNonDnaInteractions(document, moduleDef, new HashSet<URI>(participantInteractionSummary.getComponentDefs()), interactions);							
-								}								
-							}	
-						}
+							//DNA interactions are already added.
+							addInteraction(document, moduleDef, sbolInteractionDocument, null, null);
+							if (sourceInteraction.containsType(SystemsBiologyOntology.NON_COVALENT_BINDING))
+							{	
+								System.out.println(participantInteractionSummary.getComponentDefs());
+								addNonDnaInteractions(document, moduleDef, new HashSet<URI>(participantInteractionSummary.getComponentDefs()), interactions);	
+								
+							}								
+						}	
 					}
+					else
+					{
+						linkToParent(document.getModuleDefinition(interactionModuleDef.getIdentity()), moduleDef);
+					}
+					
+					
 				}
 			}
 		}
 	}
+	
 
 	private ComponentDefinition createComponentDefinition(SBOLDocument document, ComponentDefinition tempCompDef) throws SBOLValidationException
 	{
@@ -509,10 +539,22 @@ public class SBOLInteractionAdder_GeneCentric{
 	
 	private List<ModuleDefinition> addInteraction(SBOLDocument document, ModuleDefinition moduleDef, SBOLInteractionSummary summaryInteraction, ComponentDefinition compDef, ComponentDefinition design) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
-		SBOLDocument sbolInteractionDocument=SBOLStackHandler.getInteraction(this.endPointUrl,summaryInteraction.getUri());
-		List<ModuleDefinition> moduleDefs= addInteraction(document, moduleDef, sbolInteractionDocument, compDef, design);
-		
-		return moduleDefs;
+		//GMGMGM
+		ModuleDefinition interactionModuleDef=getModuleDefinitionByInteraction(document, summaryInteraction.getUri());
+		if (interactionModuleDef==null)
+		{
+			SBOLDocument sbolInteractionDocument=SBOLStackHandler.getInteraction(this.endPointUrl,summaryInteraction.getUri());		
+			List<ModuleDefinition> moduleDefs= addInteraction(document, moduleDef, sbolInteractionDocument, compDef, design);
+			return moduleDefs;
+		}
+		else
+		{
+			linkToParent(interactionModuleDef, moduleDef);
+			List<ModuleDefinition> result= new ArrayList<ModuleDefinition>();
+			result.add(interactionModuleDef);
+			return result;
+		}
+			
 	}
 	
 	private List<ModuleDefinition> addInteraction(SBOLDocument document, ModuleDefinition moduleDef, SBOLDocument sourceDocument, ComponentDefinition compDef, ComponentDefinition design) throws VPRException, SBOLValidationException, VPRTripleStoreException
@@ -525,10 +567,10 @@ public class SBOLInteractionAdder_GeneCentric{
 				ModuleDefinition newModuleDefinition=document.getModuleDefinition(moduleDefTemp.getIdentity());
 				if (newModuleDefinition==null)
 				{
-					newModuleDefinition=copySourceModuleDefinition(document, moduleDefTemp);
-					setInputsOutputs(newModuleDefinition);
-					linkToParent(newModuleDefinition, moduleDef);
+					newModuleDefinition=copySourceModuleDefinition(document, moduleDefTemp);					
 				}
+				setInputsOutputs(newModuleDefinition);
+				linkToParent(newModuleDefinition, moduleDef);
 				if ( compDef!=null && compDef.getTypes().contains(ComponentDefinition.DNA))
 				{
 					linkComponent(moduleDef, design, compDef);

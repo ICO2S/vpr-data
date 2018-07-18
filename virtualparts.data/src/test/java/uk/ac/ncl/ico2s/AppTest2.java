@@ -13,6 +13,81 @@ import junit.framework.TestCase;
 
 public class AppTest2 extends TestCase {
 
+	 public void testPopulateWithInteractionsInverterDesign2_v2() throws Exception
+	    {
+		 try
+		 {
+			String endpoint="https://synbiohub.org/sparql";
+			 
+			SBOLDocument doc=new SBOLDocument();
+		    String base="https://synbiohub.org/public/bsu/";
+		    doc.setDefaultURIprefix(base);
+		   
+		    //Designs
+		    String design1="BO_27661:prom;BO_27783:rbs;BO_32077:cds;BO_4257:ter";
+		    String design2="BO_27632:prom;BO_27783:rbs;BO_31554:cds;BO_27783:rbs;BO_32077:cds;BO_4257:ter";
+		    
+		    
+		    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, design1), "design1");
+		    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, design2), "design2");
+		    
+		    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "inverterExample2_v2.xml")); 
+			    			 
+			//SBOLDocument doc=SBOLReader.read(new File(getOutputDir() + "/" + "my_NegativeAutoRegulatoryDesign.xml"));
+			SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint));
+			interactionAdder.addInteractions(doc);    	 	   
+		    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "inverterExample2_output_v2.xml")); 
+		
+		 }
+		 catch (Exception e)
+		 {
+			 e.printStackTrace();
+			 throw e;
+		 }
+	    }
+	 
+	 //This does not find interactions
+	 public void un_testYuvalDemo() throws Exception
+	    {
+		 try
+		 {
+			 String endpoint="https://synbiohub.org/sparql";//https://synbiohub.utah.edu/sparql";
+				 
+			//String sbol=TestUtil.getResourceFile("sbol/AraSensor.xml");
+			SBOLDocument doc=SBOLReader.read(new File(TestUtils.getOutputDir() + "/" + "YuvalDemo.sbol"));
+			SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint));
+			interactionAdder.addInteractions(doc);    	 	   
+		    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "YuvalDemo_output.sbol")); 
+		
+		 }
+		 catch (Exception e)
+		 {
+			 e.printStackTrace();
+			 throw e;
+		 }
+	    }
+	 
+
+	 public void un_testYeastDemo() throws Exception
+	    {
+		 try
+		 {
+			 String endpoint="https://synbiohub.utah.edu/sparql";
+			//String sbol=TestUtil.getResourceFile("sbol/AraSensor.xml");
+			SBOLDocument doc=SBOLReader.read(new File(TestUtils.getOutputDir() + "/" + "UWYeastDemo.sbol"));
+			SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint));
+			interactionAdder.addInteractions(doc);    	 	   
+		    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "UWYeastDemooutput.sbol")); 
+		
+		 }
+		 catch (Exception e)
+		 {
+			 e.printStackTrace();
+			 throw e;
+		 }
+	    }
+	    
+	 
 	public void un_testNegativeAutoRegulatory_v2() throws Exception
     {
 	 try
@@ -39,7 +114,7 @@ public class AppTest2 extends TestCase {
 	 }
     }
 	
-	  public void testPopulateWithInteractionsInverterDesign_v2() throws Exception
+	  public void un_testPopulateWithInteractionsInverterDesign_v2() throws Exception
 	    {
 		 try
 		 {
@@ -58,9 +133,7 @@ public class AppTest2 extends TestCase {
 		    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, design2), "design2");
 		    
 		    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "inverterExample_v2.xml")); 
-			    
-		    	
-			 
+			    			 
 			//SBOLDocument doc=SBOLReader.read(new File(getOutputDir() + "/" + "my_NegativeAutoRegulatoryDesign.xml"));
 			SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint));
 			interactionAdder.addInteractions(doc);    	 	   
