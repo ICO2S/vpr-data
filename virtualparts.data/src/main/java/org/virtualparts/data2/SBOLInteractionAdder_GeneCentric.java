@@ -472,7 +472,7 @@ public class SBOLInteractionAdder_GeneCentric{
 					{
 						SBOLDocument sbolInteractionDocument=getInteractionDetail(participantInteractionSummary, uri);
 						ModuleDefinition sourceInteractionModuleDef=sbolInteractionDocument.getModuleDefinitions().iterator().next();
-						System.out.println("MD_Interaction:" +  sourceInteractionModuleDef.getIdentity());
+						//System.out.println("MD_Interaction:" +  sourceInteractionModuleDef.getIdentity());
 						Interaction sourceInteraction=sbolInteractionDocument.getModuleDefinitions().iterator().next().getInteractions().iterator().next();
 						
 						boolean hasDnaParticipant=hasDnaParticipant(sbolInteractionDocument, moduleDef, sourceInteraction);
@@ -482,7 +482,7 @@ public class SBOLInteractionAdder_GeneCentric{
 							addInteraction(document, moduleDef, sbolInteractionDocument, null, null);
 							if (sourceInteraction.containsType(SystemsBiologyOntology.NON_COVALENT_BINDING))
 							{	
-								System.out.println(participantInteractionSummary.getComponentDefs());
+								//System.out.println(participantInteractionSummary.getComponentDefs());
 								addNonDnaInteractions(document, moduleDef, new HashSet<URI>(participantInteractionSummary.getComponentDefs()), interactions);	
 								
 							}								
@@ -550,6 +550,13 @@ public class SBOLInteractionAdder_GeneCentric{
 		else
 		{
 			linkToParent(interactionModuleDef, moduleDef);
+			
+			//20180910:Fix to include missing mapsTos on functional components.
+			if ( compDef!=null && compDef.getTypes().contains(ComponentDefinition.DNA))
+			{
+				linkComponent(moduleDef, design, compDef);
+			}	
+			
 			List<ModuleDefinition> result= new ArrayList<ModuleDefinition>();
 			result.add(interactionModuleDef);
 			return result;

@@ -2,9 +2,12 @@ package uk.ac.ncl.ico2s;
 
 import java.io.File;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.sbolstandard.core2.SBOLDocument;
 import org.sbolstandard.core2.SBOLReader;
+import org.virtualparts.data.QueryParameters;
 import org.virtualparts.data2.SBOLInteractionAdder_GeneCentric;
 import org.virtualparts.sbol.SBOLHandler;
 import org.virtualparts.sbol.SVPWriteHandler;
@@ -13,7 +16,7 @@ import junit.framework.TestCase;
 
 public class AppTest2 extends TestCase {
 
-	 public void testPopulateWithInteractionsInverterDesign2_v2() throws Exception
+	 public void un_testPopulateWithInteractionsInverterDesign2_v2() throws Exception
 	    {
 		 try
 		 {
@@ -146,5 +149,37 @@ public class AppTest2 extends TestCase {
 			 throw e;
 		 }
 	    }
+	  
+	  public void test_VPRBug() throws Exception
+	    {
+		 try
+		 {
+			 
+			 String endpoint="https://synbiohub.programmingbiology.org/sparql";//https://synbiohub.org/sparql";//https://synbiohub.utah.edu/sparql";
+			 
+				//String sbol=TestUtil.getResourceFile("sbol/AraSensor.xml");
+				SBOLDocument doc=SBOLReader.read(new File(TestUtils.getOutputDir() + "/" + "VPR_Bug.xml"));
+				
+				List<URI> collections=new ArrayList<URI>();
+				collections.add(new URI("https://synbiohub.programmingbiology.org/public/Cello_Parts/Cello_Parts_collection/1"));
+				        
+				QueryParameters params=new QueryParameters();
+				params.setCollectionURIs(collections);
+				    
+				SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint),"test",params);
+				interactionAdder.addInteractions(doc);    	 	   
+			    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "VPR_Bug_output.xml")); 
+			
+			    
+			    
+		
+		 }
+		 catch (Exception e)
+		 {
+			 e.printStackTrace();
+			 throw e;
+		 }
+	    }
+	    
 	    
 }
