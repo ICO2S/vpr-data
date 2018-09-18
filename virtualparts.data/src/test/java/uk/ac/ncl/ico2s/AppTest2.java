@@ -150,7 +150,7 @@ public class AppTest2 extends TestCase {
 		 }
 	    }
 	  
-	  public void test_VPRBug() throws Exception
+	  public void no_test_VPRBug() throws Exception
 	    {
 		 try
 		 {
@@ -169,9 +169,101 @@ public class AppTest2 extends TestCase {
 				SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint),"test",params);
 				interactionAdder.addInteractions(doc);    	 	   
 			    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "VPR_Bug_output.xml")); 
-			
-			    
-			    
+		 }
+		 catch (Exception e)
+		 {
+			 e.printStackTrace();
+			 throw e;
+		 }
+	    }
+	  
+	  public void no_test_Recursive_subParents() throws Exception
+	    {
+		 try
+		 {
+			 String endpoint="https://synbiohub.org/sparql";//https://synbiohub.utah.edu/sparql";
+				
+			SBOLDocument doc=new SBOLDocument();
+		    String base="https://synbiohub.org/public/bsu/";
+		    doc.setDefaultURIprefix(base);
+		   
+		    //Designs
+		    String rbsCdsTerDesign="BO_27783:rbs;BO_32077:cds;BO_4257:ter";
+		    
+		    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, rbsCdsTerDesign), "rbsCdsTerDesign");
+		    String design="BO_27632:prom;rbsCdsTerDesign:eng";
+		    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, design), "NegativeAutoRegulatoryDesign_Cello_data2");
+		    
+		    SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint));
+		    interactionAdder.addInteractions(doc); 
+		    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "NegativeAutoRegulatoryDesign_Cello_data2.xml")); 
+		
+		    /*
+		    MD_top
+		    	FuncComp TU
+		    		MapsTo BO_27682 (promoter) to BO_27682_top (promoter_top)
+		    		MapsTo rbsCdsTerDesign (gene) to rbsCdsTerDesign_top (gene_top)
+		    		
+		    	FuncComp rbsCdsTerDesign_top (gene_top)
+		    		MapsTo BO_32077(cds) to BO_32077_top(cds_top)
+		    	
+		    	FuncComp BO_32077
+		    	
+		    	FuncComp BO_27682 
+		    	
+		    	FuncComp BO_10845 
+		    */
+		
+		 }
+		 catch (Exception e)
+		 {
+			 e.printStackTrace();
+			 throw e;
+		 }
+	    }
+	  
+	  public void test_Recursive_subParents2() throws Exception
+	    {
+		 try
+		 {
+			 String endpoint="https://synbiohub.org/sparql";//https://synbiohub.utah.edu/sparql";
+				
+			SBOLDocument doc=new SBOLDocument();
+		    String base="https://synbiohub.org/public/bsu/";
+		    doc.setDefaultURIprefix(base);
+		   
+		    //Designs
+		    String rbsCdsDesign="BO_27783:rbs;BO_32077:cds";
+		    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, rbsCdsDesign), "rbsCdsDesign");
+		    
+		    String rbsCdsTerDesign="rbsCdsDesign:eng;BO_4257:ter";
+		    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, rbsCdsTerDesign), "rbsCdsTerDesign");
+		    
+		    String design="BO_27632:prom;rbsCdsTerDesign:eng";
+		    SVPWriteHandler.convertToSBOL(doc,TestUtils.getSVPDesign(base, design), "NegativeAutoRegulatoryDesign_Cello_2_data2");
+		    
+		    SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint));
+		    interactionAdder.addInteractions(doc); 
+		    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "NegativeAutoRegulatoryDesign_Cello_2_data2.xml")); 
+		
+		    /*
+		    MD_top
+		    	FuncComp TU
+		    		MapsTo BO_27682 (promoter) to BO_27682_top (promoter_top)
+		    		MapsTo rbsCdsTer to rbsCdsTer_top
+		    	
+		    	FuncComp rbsCdsTer_top
+		    		MapsTo rbsCds to rbs_Cds_top
+		    		
+		    	FuncComp rbsCds_top
+		    		MapsTo BO_32077(cds) to BO_32077_top(cds_top)
+		    	
+		    	FuncComp BO_32077
+		    	
+		    	FuncComp BO_27682 
+		    	
+		    	FuncComp BO_10845 
+		    */
 		
 		 }
 		 catch (Exception e)

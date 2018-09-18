@@ -21,13 +21,6 @@
     <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
     <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
   </sbol:ComponentDefinition>
-  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/BO_27632/1">
-    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/BO_27632"/>
-    <sbol:displayId>BO_27632</sbol:displayId>
-    <sbol:version>1</sbol:version>
-    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
-    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
-  </sbol:ComponentDefinition>
   <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/rbsCdsTerDesign/1">
     <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/rbsCdsTerDesign"/>
     <sbol:displayId>rbsCdsTerDesign</sbol:displayId>
@@ -81,6 +74,13 @@
         <sbol:object rdf:resource="https://synbiohub.org/public/bsu/rbsCdsTerDesign/BO_32077C2/1"/>
       </sbol:SequenceConstraint>
     </sbol:sequenceConstraint>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/BO_27632/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/BO_27632"/>
+    <sbol:displayId>BO_27632</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
   </sbol:ComponentDefinition>
   <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello/1">
     <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/bsu/NegativeAutoRegulatoryDesign_Cello"/>

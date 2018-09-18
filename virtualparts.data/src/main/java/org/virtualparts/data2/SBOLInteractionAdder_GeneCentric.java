@@ -605,7 +605,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		}
 	}
 	
-	private void linkComponent(ModuleDefinition moduleDef, ComponentDefinition design, ComponentDefinition compDef) throws SBOLValidationException
+	private void linkComponentOld(ModuleDefinition moduleDef, ComponentDefinition design, ComponentDefinition compDef) throws SBOLValidationException
 	{
 		FunctionalComponent fcDesign=getFunctionalComponent(moduleDef, design.getIdentity());
 		FunctionalComponent fcComponent=getFunctionalComponent(moduleDef, compDef.getIdentity());		
@@ -622,6 +622,47 @@ public class SBOLInteractionAdder_GeneCentric{
 			}
 		}
 	}
+	
+	private void createMapsTo(ModuleDefinition moduleDef, ComponentDefinition design, ComponentDefinition compDef, Component component) throws SBOLValidationException
+	{
+		FunctionalComponent fcDesign=getOrCreateFunctionalComponent(moduleDef, design.getIdentity());					
+		MapsTo mapsTo=fcDesign.getMapsTo(compDef.getDisplayId() + "_mapsTo");
+		if (mapsTo==null) {
+			FunctionalComponent fcComponent=getOrCreateFunctionalComponent(moduleDef, compDef.getIdentity());		
+				
+			fcDesign.createMapsTo(compDef.getDisplayId() + "_mapsTo", RefinementType.USELOCAL, fcComponent.getIdentity(), component.getIdentity());
+		}
+	}
+	private boolean linkComponent(ModuleDefinition moduleDef, ComponentDefinition design, ComponentDefinition compDef) throws SBOLValidationException
+	{
+		boolean found=false;
+		if (design.getComponents()!=null && design.getComponents().size()>0)
+		{	
+			for (Component componentTemp: design.getComponents())
+			{
+				if (componentTemp.getDefinitionURI().equals(compDef.getIdentity()))
+				{
+					createMapsTo(moduleDef, design, compDef, componentTemp);					
+					found=true;
+					
+				}
+				else
+				{
+					boolean foundInSubComponents=linkComponent(moduleDef, componentTemp.getDefinition(), compDef);
+					if (foundInSubComponents)
+					{
+						ComponentDefinition parentComponentDef=componentTemp.getDefinition();
+						//Create the parent component which has the component that is searched for
+						createMapsTo(moduleDef, design, parentComponentDef, componentTemp);	
+						found=true;
+					}
+				}
+			}
+			
+		}
+		return found;
+	}
+		
 	
 	private List<ComponentDefinition> getFlattenedDesigns(SBOLDocument document) throws SBOLValidationException, VPRException
 	{
@@ -991,6 +1032,27 @@ public class SBOLInteractionAdder_GeneCentric{
 		}
 		return null;
 	}	
+	
+	private FunctionalComponent getOrCreateFunctionalComponent(ModuleDefinition moduleDef,URI componentDefinitionURI) throws SBOLValidationException {
+		FunctionalComponent found=null;
+		 
+		if (moduleDef.getFunctionalComponents()!=null)
+		{
+			
+			for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
+			{
+				if (fComp.getDefinitionURI().equals(componentDefinitionURI))
+				{
+					return fComp;
+				}
+			}
+		}
+		if (found==null)
+		{
+			found=moduleDef.createFunctionalComponent(SBOLHandler.getDisplayId(componentDefinitionURI) + "_fc", AccessType.PRIVATE, componentDefinitionURI, DirectionType.NONE);			
+		}
+		return found;
+	}
 
 
 	
