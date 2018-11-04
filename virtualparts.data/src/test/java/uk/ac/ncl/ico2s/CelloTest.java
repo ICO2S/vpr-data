@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URI;
 
 import org.sbolstandard.core2.SBOLDocument;
+import org.sbolstandard.core2.SBOLReader;
 import org.virtualparts.data.SBOLInteractionAdder_GeneCentric;
 import org.virtualparts.sbol.SBOLHandler;
 import org.virtualparts.sbol.SVPWriteHandler;
@@ -128,6 +129,11 @@ public class CelloTest extends TestCase {
 		 throw e;
 	 }
     }
+    
+    
+    
+   
+    
     public void testWriteSBOL() throws Exception
     {
 	 try
