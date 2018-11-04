@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.virtualparts</groupId>
 	<artifactId>virtualparts-parent</artifactId>
-	<version>2.0.10-SNAPSHOT</version>
+	<version>2.0.14-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Virtual Parts</name>
 	<description>Libraries and applications for the Virtual Parts Repository</description>

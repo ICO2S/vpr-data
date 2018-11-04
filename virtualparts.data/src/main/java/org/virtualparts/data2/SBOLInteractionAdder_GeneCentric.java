@@ -1,4 +1,4 @@
-package org.virtualparts.data;
+package org.virtualparts.data2;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -28,15 +28,19 @@ import org.sbolstandard.core2.SBOLValidationException;
 import org.sbolstandard.core2.SequenceAnnotation;
 import org.sbolstandard.core2.SequenceOntology;
 import org.sbolstandard.core2.SystemsBiologyOntology;
+import org.sbolstandard.examples.Sbol2Terms.component;
 import org.virtualparts.VPRException;
 import org.virtualparts.VPRTripleStoreException;
+import org.virtualparts.data.Cacher;
+import org.virtualparts.data.QueryParameters;
+import org.virtualparts.data.SBOLInteractionSummary;
+import org.virtualparts.data.SBOLStackHandler;
 import org.virtualparts.sbol.SBOLHandler;
 
 public class SBOLInteractionAdder_GeneCentric{
 	private URI endPointUrl=null;
 	private String rootModuleId=null;
 	private QueryParameters queryParameters=null;
-	private boolean designsPublicAccess=false;
 	
 	public SBOLInteractionAdder_GeneCentric(URI endPointUrl)
 	{
@@ -55,15 +59,6 @@ public class SBOLInteractionAdder_GeneCentric{
 		this.rootModuleId=rootModuleId;		
 		this.queryParameters=queryParameters;
 	}
-	
-	public SBOLInteractionAdder_GeneCentric(URI endPointUrl, String rootModuleId, QueryParameters queryParameters, boolean designsPublicAccess)
-	{
-		this(endPointUrl);
-		this.rootModuleId=rootModuleId;		
-		this.queryParameters=queryParameters;
-		this.designsPublicAccess=true;
-	}
-	
 	
 	private String getRootModuleId(List<ComponentDefinition> designs) throws VPRException
 	{
@@ -105,6 +100,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		}
 	}
 	
+	
 	private void addModuleDefinitions(SBOLDocument document, List<ComponentDefinition> compDefs, ModuleDefinition moduleDef, MultiValueMap<URI, SBOLInteractionSummary>  interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		List<ModuleDefinition> subModuleDefinitions=new ArrayList<ModuleDefinition>();				
@@ -118,6 +114,27 @@ public class SBOLInteractionAdder_GeneCentric{
 		//addInteractionsBetweenSubModules(document, moduleDef,subModuleDefinitions, interactions);		
 	}
 		
+	
+	private ModuleDefinition createModuleDefinition(SBOLDocument document, ModuleDefinition moduleDef) throws SBOLValidationException
+	{
+		String defaultURIPrefix=document.getDefaultURIprefix();
+		String tempDefaultURIPrefix=SBOLHandler.getBaseUri(moduleDef.getIdentity().toString());
+		document.setDefaultURIprefix(tempDefaultURIPrefix);
+		String displayId=SBOLHandler.getDisplayId(moduleDef.getIdentity());
+		String version=SBOLHandler.getVersion(moduleDef.getIdentity().toString());
+		ModuleDefinition moduleDefNew=null;
+		if (version==null)
+		{
+			moduleDefNew=document.createModuleDefinition(displayId);
+		}
+		else
+		{
+			moduleDefNew=document.createModuleDefinition(displayId, version);
+		}
+		document.setDefaultURIprefix(defaultURIPrefix);
+		return moduleDefNew;
+	}
+	
 	private ModuleDefinition addModuleDefinition(SBOLDocument document, ComponentDefinition compDef, ModuleDefinition parentModuleDef,MultiValueMap<URI, SBOLInteractionSummary>  interactions) throws SBOLValidationException, VPRException, VPRTripleStoreException
 	{
 		ModuleDefinition moduleDef=null;
@@ -125,24 +142,8 @@ public class SBOLInteractionAdder_GeneCentric{
 		{
 			document.setDefaultURIprefix(SBOLHandler.getBaseUri(compDef.getIdentity()));
 			moduleDef=document.createModuleDefinition(compDef.getDisplayId() + "_module", "1");	
+			moduleDef.createFunctionalComponent(compDef.getDisplayId() + "_fc", AccessType.PRIVATE, compDef.getIdentity(), DirectionType.NONE);
 			Set<URI> nonDNAComponentDefs=addInternalInteractions(document, moduleDef, interactions, compDef);
-			
-//			if (isComposedOfTUs(compDef))
-//			{
-//				throw new VPRException("Complex designs with multiple transcription units within the same ComponentDefinitions are currently not supported. Please split them into individual TUs, each reprenseted by a different ComponentDefinition and try again! Design:" + compDef.getIdentity().toString());
-//
-//				/*				
-//				//for (Component component:compDef.getComponents())
-//				//{
-//				//	compDefs.add(component.getDefinition());
-//				//}
-//				addModuleDefinitions(document, compDefs, moduleDef, interactions);	
-//				*/
-//			}
-//			else
-//			{
-//				addInternalInteractions(document, moduleDef, interactions, compDef);
-//			}
 			
 			if (parentModuleDef!=null)
 			{
@@ -162,26 +163,19 @@ public class SBOLInteractionAdder_GeneCentric{
 	}		
 	
 	
-	private void getLeafComponentDefinitions(ComponentDefinition compDef,List<ComponentDefinition> compDefs, URI componentDefToExclude) {
+	private void getLeafComponentDefinitions(ComponentDefinition compDef,List<ComponentDefinition> compDefs) {
 		for (Component component:compDef.getComponents())
 		{
 			ComponentDefinition subCompDef=component.getDefinition();
-			if (subCompDef.containsRole(componentDefToExclude))
-			//E.g. In some modelling abstractions, it is not important how the promoter is composed. Interactions should be treated at the promoter level for iBioSim promoter models.
-			{
-				compDefs.add(subCompDef);				
-			}
-			else
-			{
+			
 				if (subCompDef.getComponents()==null || subCompDef.getComponents().size()==0)
 				{//If leaf then add
 					compDefs.add(subCompDef);
 				}
 				else
 				{
-					getLeafComponentDefinitions(subCompDef, compDefs, componentDefToExclude);
+					getLeafComponentDefinitions(subCompDef, compDefs);
 				}
-			}
 		}	
 	}
 
@@ -192,9 +186,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		addInteractions(sbolDocument,  SequenceOntology.PROMOTER, interactions);	
 		addInteractions(sbolDocument,  SequenceOntology.OPERATOR, interactions);
 		addInteractions(sbolDocument,  URI.create("http://identifiers.org/so/SO:0001263"), interactions);	
-		addInteractions(sbolDocument,  URI.create("http://identifiers.org/so/SO:0001264"), interactions);	
-		
-		
+		addInteractions(sbolDocument,  URI.create("http://identifiers.org/so/SO:0001264"), interactions);
 		return interactions;
 	}
 	
@@ -258,118 +250,6 @@ public class SBOLInteractionAdder_GeneCentric{
 	}
 	
 	
-	private void addComponentDefinition(ComponentDefinition flattenedDesign, ComponentDefinition parentCompDef, Component subComponent,List<Component> leafComponents, OrientationType parentOrientation) throws SBOLValidationException 
-	{
-		ComponentDefinition subCompDef=subComponent.getDefinition();
-		if (subCompDef.getComponents()==null || subCompDef.getComponents().size()==0)
-		{
-			Component newSubComponent=flattenedDesign.createComponent(subComponent.getDisplayId(), AccessType.PUBLIC, subCompDef.getIdentity());
-			OrientationType newOrientation=getOrientation(parentOrientation, parentCompDef.getSequenceAnnotation(subComponent));			
-			flattenedDesign.createSequenceAnnotation(subCompDef.getDisplayId() + "_" + leafComponents.size(), String.valueOf(leafComponents.size()), newOrientation);			
-			leafComponents.add(newSubComponent);
-		}
-		else
-		{
-			for (Component component:subCompDef.getComponents())
-			{
-				addComponentDefinition(flattenedDesign, subCompDef,component, leafComponents,parentOrientation);
-			}
-		}		
-	}
-
-	
-
-	
-	/*private boolean particantsExist(ModuleDefinition moduleDef, List<URI> componentDefURIs)
-	{
-		
-	}*/
-	private void addInteractionsBetweenSubModules(SBOLDocument document, ModuleDefinition moduleDef,
-			List<ModuleDefinition> subModuleDefinitions, MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException 
-	{
-		
-		if (moduleDef.getFunctionalComponents()!=null)
-		{
-			List<SBOLInteractionSummary> interactionsToAdd=new ArrayList<SBOLInteractionSummary>();
-			
-			for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
-			{				
-				if (fComp.getDirection().equals(DirectionType.NONE))
-				{
-					continue;
-				}
-				Collection<SBOLInteractionSummary> componentInteractions=interactions.getCollection(fComp.getDefinition().getIdentity());
-				if (componentInteractions==null)
-				{
-					continue;
-				}
-				for (SBOLInteractionSummary interactionSummary:componentInteractions)
-				{
-					
-					if (!interactionSummary.getComponentDefs().contains(fComp.getDefinitionURI()))
-					{
-						interactionSummary.getComponentDefs().add(fComp.getDefinitionURI());
-					}
-					
-					boolean addInteraction=true;
-					for (URI interactingComponent:interactionSummary.getComponentDefs())
-					{
-						ComponentDefinition interactingComponentDef=document.getComponentDefinition(interactingComponent);
-						//If one of the participants is DNA, then increase the number of matches to avoid adding this interaction. Such interactions are already included in submodules
-						
-						if (interactingComponentDef!=null && interactingComponentDef.containsType(ComponentDefinition.DNA))
-						{
-							addInteraction=false;
-							break;
-						}
-					}
-					if (addInteraction && !interactionsToAdd.contains(interactionSummary))
-					{
-						for (Module subModule:moduleDef.getModules())
-						{
-							int numberOfParticipatingComponents=0;		
-									for (URI interactingComponent:interactionSummary.getComponentDefs())
-									{																														
-												for (MapsTo mapsTo:subModule.getMapsTos())
-												{
-													URI targetURI=moduleDef.getFunctionalComponent(mapsTo.getLocalURI()).getDefinitionURI();
-																							
-													if (interactingComponent.equals(targetURI))
-													{
-														numberOfParticipatingComponents++;
-														break;
-													}	
-												}
-												
-											}
-																																										
-									if (numberOfParticipatingComponents==interactionSummary.getComponentDefs().size())
-									{
-										addInteraction=false;
-										break;
-									}
-						}
-					}
-				
-							
-					if (addInteraction)
-					{
-						interactionsToAdd.add(interactionSummary);
-					}
-				}								
-			}
-			
-			if (interactionsToAdd.size()>0)
-			{
-				for (SBOLInteractionSummary interationSummary:interactionsToAdd)
-				{
-					addInteraction(document, moduleDef, interationSummary, null, null);
-				}
-			}
-		}		
-	}
-		
-	
 	private void linkToParent(ModuleDefinition moduleDef, ModuleDefinition parentModuleDef) throws SBOLValidationException {
 		if (moduleDef.getFunctionalComponents()!=null)
 		{
@@ -407,28 +287,6 @@ public class SBOLInteractionAdder_GeneCentric{
 		}		
 	}
 	
-
-	
-	private List<SBOLInteractionSummary> getInteraction(MultiValueMap<URI, SBOLInteractionSummary> interactions,URI componentURI, URI interactionType)
-	{
-		List<SBOLInteractionSummary> foundInteractions=new ArrayList<SBOLInteractionSummary>();
-		Collection<SBOLInteractionSummary> componentInteractions=interactions.getCollection(componentURI);
-		for (SBOLInteractionSummary interaction:componentInteractions)
-		{
-			if ((interaction.getTypes().contains(interactionType)))
-			{
-				foundInteractions.add(interaction);
-			}
-		}
-		return foundInteractions;		
-	}
-	
-	
-		
-	
-	
-	
-	
 	
 	private Set<URI> addInternalInteractions(SBOLDocument document, ModuleDefinition moduleDef,
 			MultiValueMap<URI, SBOLInteractionSummary> interactions, ComponentDefinition design) throws SBOLValidationException, VPRException, VPRTripleStoreException 
@@ -437,7 +295,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		
 		List<ComponentDefinition> compDefs=new ArrayList<ComponentDefinition>();
 		
-		getLeafComponentDefinitions(design, compDefs,SequenceOntology.PROMOTER);
+		getLeafComponentDefinitions(design, compDefs);
 		
 		for (ComponentDefinition compDef:compDefs)
 		{
@@ -447,18 +305,18 @@ public class SBOLInteractionAdder_GeneCentric{
 			{
 				for (SBOLInteractionSummary interactionSummary:interactionSummaries)
 				{
-					Interaction interaction = addInteraction(document, moduleDef, interactionSummary, compDef, design);					
-					dnaInteractions.add(interaction);										
+					List<ModuleDefinition> moduleDefs = addInteraction(document, moduleDef, interactionSummary, compDef, design);	
+					for (ModuleDefinition moduleDefTemp:moduleDefs)
+					{
+						for (Interaction interactionTemp:moduleDefTemp.getInteractions())
+						{
+							dnaInteractions.add(interactionTemp);	
+						}
+					}
 				}
 			}
 		}
 		
-		/*FunctionalComponent fCompDesign= getFunctionalComponent(moduleDef, design.getIdentity());
-		if (fCompDesign!=null)
-		{
-			fCompDesign.setDirection(DirectionType.NONE);
-			fCompDesign.setAccess(AccessType.PRIVATE);			
-		}*/
 		
 		Set<URI> nonDNAComponentDefs=new HashSet<URI>();
 			for (Interaction dnaInteraction:dnaInteractions)
@@ -471,10 +329,7 @@ public class SBOLInteractionAdder_GeneCentric{
 						nonDNAComponentDefs.add(participatingCompDefURI);
 					}
 				}
-			}							
-			//GMGM addNonDnaInteractions(document, moduleDef, nonDNAComponentDefs, interactions);
-			
-			
+			}								
 			
 			return nonDNAComponentDefs;
 	}		
@@ -483,51 +338,35 @@ public class SBOLInteractionAdder_GeneCentric{
 	{
 		for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
 		{				
-			DirectionType direction = DirectionType.NONE;
-			AccessType access = AccessType.PRIVATE;
+			DirectionType direction=DirectionType.NONE;
+			AccessType access=AccessType.PRIVATE;	
 			if (!fComp.getDefinition().containsType(ComponentDefinition.DNA))
-			{
-				access = AccessType.PUBLIC;
-				if (hasRole(moduleDef, fComp, SystemsBiologyOntology.PRODUCT))
-				{
-					direction = DirectionType.INOUT;
-				} else {
-					direction = DirectionType.IN;
-				}
-			}
-			else if (this.designsPublicAccess)//To make fc's that represent designs public
-			{
-				boolean makePublic=false;
-				if (existAsOutInSubModules(moduleDef, fComp)) 
-				{
-					makePublic=true;
-				}
-				else if (fComp.getDefinition().containsRole(SequenceOntology.ENGINEERED_REGION))
-				{
-					List<Interaction> engineeredGeneInteractions=getInteractions(moduleDef, fComp);
-					if (engineeredGeneInteractions!=null && engineeredGeneInteractions.size()>0)
+			{					
+					access=AccessType.PUBLIC;
+					if (hasRole(moduleDef, fComp, SystemsBiologyOntology.PRODUCT))
 					{
-						makePublic=true;
+						direction=DirectionType.INOUT;			
+					}
+					else
+					{
+						direction=DirectionType.IN;										
+					}		
+				
+			
+				if (direction==DirectionType.IN )
+				{
+					if (existAsOutInSubModules(moduleDef, fComp))
+					{
+						direction=DirectionType.INOUT;
 					}
 				}
-				if (makePublic)
-				{
-					direction=DirectionType.INOUT;
-					access=AccessType.PUBLIC;
-				}
 			}
-
-			if (direction == DirectionType.IN)
+			else
 			{
-				if (existAsOutInSubModules(moduleDef, fComp)) 
-				{
-					direction = DirectionType.INOUT;
-				}
-				// access=AccessType.PUBLIC;
+				direction=DirectionType.INOUT;
+				access=AccessType.PUBLIC;
 			}
 			
-			
-
 			fComp.setDirection(direction);
 			fComp.setAccess(access);		
 		}
@@ -536,7 +375,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	private boolean existAsOutInSubModules(ModuleDefinition moduleDef, FunctionalComponent fComp)	
 	{
 		boolean result=false;
-		if (moduleDef.getModules()!=null)
+		if (moduleDef.getModules()!=null )
 		{
 			for (Module module:moduleDef.getModules())
 			{
@@ -600,6 +439,25 @@ public class SBOLInteractionAdder_GeneCentric{
 		return sbolInteractionDocument;
 	}
 	
+	Set<URI> processedInteractions=new HashSet<URI>();
+	
+	private ModuleDefinition getModuleDefinitionByInteraction(SBOLDocument document, URI interactionUri)
+	{
+	   if (document.getModuleDefinitions()!=null)
+	   {
+		   for (ModuleDefinition moduleDef:document.getModuleDefinitions())
+		   {
+			   
+			   if (moduleDef.getInteraction(interactionUri)!=null)
+			   {
+				   return moduleDef;
+			   }
+		   }
+	   }
+		return null;
+	}
+
+
 	private void addNonDnaInteractions(SBOLDocument document, ModuleDefinition moduleDef,Set<URI> compDefURIs,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		for (URI uri:compDefURIs)
@@ -609,30 +467,38 @@ public class SBOLInteractionAdder_GeneCentric{
 			{
 				for (SBOLInteractionSummary participantInteractionSummary:participantInteractions)
 				{								
-					String displayId=SBOLHandler.getDisplayId(uri.toString());
-					if (moduleDef.getInteraction(displayId)==null)
+					ModuleDefinition interactionModuleDef=getModuleDefinitionByInteraction(document, participantInteractionSummary.getUri());
+					if (interactionModuleDef==null)
 					{
 						SBOLDocument sbolInteractionDocument=getInteractionDetail(participantInteractionSummary, uri);
+						ModuleDefinition sourceInteractionModuleDef=sbolInteractionDocument.getModuleDefinitions().iterator().next();
+						//System.out.println("MD_Interaction:" +  sourceInteractionModuleDef.getIdentity());
+						Interaction sourceInteraction=sbolInteractionDocument.getModuleDefinitions().iterator().next().getInteractions().iterator().next();
 						
-						Interaction interaction=sbolInteractionDocument.getModuleDefinitions().iterator().next().getInteractions().iterator().next();
-						if (moduleDef.getInteraction(interaction.getDisplayId())==null)
+						boolean hasDnaParticipant=hasDnaParticipant(sbolInteractionDocument, moduleDef, sourceInteraction);
+						if (!hasDnaParticipant)
 						{
-							boolean hasDnaParticipant=hasDnaParticipant(sbolInteractionDocument, moduleDef, interaction);
-							if (!hasDnaParticipant)
-							{
-								//DNA interactions are already added.
-								addInteraction(document, moduleDef, interaction,null,null);	
-								if (interaction.containsType(SystemsBiologyOntology.NON_COVALENT_BINDING))
-								{													
-									addNonDnaInteractions(document, moduleDef, new HashSet<URI>(participantInteractionSummary.getComponentDefs()), interactions);							
-								}								
-							}	
-						}
+							//DNA interactions are already added.
+							addInteraction(document, moduleDef, sbolInteractionDocument, null, null);
+							if (sourceInteraction.containsType(SystemsBiologyOntology.NON_COVALENT_BINDING))
+							{	
+								//System.out.println(participantInteractionSummary.getComponentDefs());
+								addNonDnaInteractions(document, moduleDef, new HashSet<URI>(participantInteractionSummary.getComponentDefs()), interactions);	
+								
+							}								
+						}	
 					}
+					else
+					{
+						linkToParent(document.getModuleDefinition(interactionModuleDef.getIdentity()), moduleDef);
+					}
+					
+					
 				}
 			}
 		}
 	}
+	
 
 	private ComponentDefinition createComponentDefinition(SBOLDocument document, ComponentDefinition tempCompDef) throws SBOLValidationException
 	{
@@ -644,39 +510,159 @@ public class SBOLInteractionAdder_GeneCentric{
 		return compDef;
 	}
 	
-	private Interaction addInteraction(SBOLDocument document, ModuleDefinition moduleDef, Interaction sourceInteraction,ComponentDefinition compDef, ComponentDefinition replacementCompDef) throws SBOLValidationException, VPRException, VPRTripleStoreException {
-		Interaction interaction=copyInteraction(document, sourceInteraction, moduleDef,compDef,replacementCompDef);	
-		
-		for (Participation participation:interaction.getParticipations())
+			
+	private ModuleDefinition copySourceModuleDefinition(SBOLDocument document, ModuleDefinition sourceModuleDef) throws SBOLValidationException, VPRException, VPRTripleStoreException
+	{
+		ModuleDefinition newModuleDef=createModuleDefinition(document, sourceModuleDef);
+		copyIdentifiedProperties(document,newModuleDef, sourceModuleDef);
+		for (Interaction sourceInteraction: sourceModuleDef.getInteractions())
 		{
-			URI componentDefinitionURI=participation.getParticipant().getDefinitionURI();					
-			if (document.getComponentDefinition(componentDefinitionURI)==null)
+			Interaction interaction=copyInteraction(document, sourceInteraction, newModuleDef);	
+			
+			for (Participation participation:interaction.getParticipations())
 			{
-				SBOLDocument tempDocument= SBOLStackHandler.getComponent(componentDefinitionURI, this.endPointUrl);
-				for (ComponentDefinition tempCompDef:tempDocument.getComponentDefinitions())
+				URI componentDefinitionURI=participation.getParticipant().getDefinitionURI();					
+				if (document.getComponentDefinition(componentDefinitionURI)==null)
 				{
-					ComponentDefinition compDefParticipation=createComponentDefinition(document, tempCompDef);
-					compDefParticipation.setRoles(tempCompDef.getRoles());
-					copyIdentifiedProperties(document, compDefParticipation, tempCompDef);
-				}						
+					SBOLDocument tempDocument= SBOLStackHandler.getComponent(componentDefinitionURI, this.endPointUrl);
+					for (ComponentDefinition tempCompDef:tempDocument.getComponentDefinitions())
+					{
+						ComponentDefinition compDefParticipation=createComponentDefinition(document, tempCompDef);
+						compDefParticipation.setRoles(tempCompDef.getRoles());
+						copyIdentifiedProperties(document, compDefParticipation, tempCompDef);
+					}						
+				}
+			}
+		}		
+		return newModuleDef;
+	}
+	
+	private List<ModuleDefinition> addInteraction(SBOLDocument document, ModuleDefinition moduleDef, SBOLInteractionSummary summaryInteraction, ComponentDefinition compDef, ComponentDefinition design) throws VPRException, SBOLValidationException, VPRTripleStoreException
+	{
+		//GMGMGM
+		ModuleDefinition interactionModuleDef=getModuleDefinitionByInteraction(document, summaryInteraction.getUri());
+		if (interactionModuleDef==null)
+		{
+			SBOLDocument sbolInteractionDocument=SBOLStackHandler.getInteraction(this.endPointUrl,summaryInteraction.getUri());		
+			List<ModuleDefinition> moduleDefs= addInteraction(document, moduleDef, sbolInteractionDocument, compDef, design);
+			return moduleDefs;
+		}
+		else
+		{
+			linkToParent(interactionModuleDef, moduleDef);
+			
+			//20180910:Fix to include missing mapsTos on functional components.
+			if ( compDef!=null && compDef.getTypes().contains(ComponentDefinition.DNA))
+			{
+				linkComponent(moduleDef, design, compDef);
+			}	
+			
+			List<ModuleDefinition> result= new ArrayList<ModuleDefinition>();
+			result.add(interactionModuleDef);
+			return result;
+		}
+			
+	}
+	
+	private List<ModuleDefinition> addInteraction(SBOLDocument document, ModuleDefinition moduleDef, SBOLDocument sourceDocument, ComponentDefinition compDef, ComponentDefinition design) throws VPRException, SBOLValidationException, VPRTripleStoreException
+	{
+		List<ModuleDefinition> moduleDefs=new ArrayList<ModuleDefinition>();
+		if (sourceDocument.getModuleDefinitions()!=null)
+		{
+			for (ModuleDefinition moduleDefTemp:sourceDocument.getModuleDefinitions())
+			{
+				ModuleDefinition newModuleDefinition=document.getModuleDefinition(moduleDefTemp.getIdentity());
+				if (newModuleDefinition==null)
+				{
+					newModuleDefinition=copySourceModuleDefinition(document, moduleDefTemp);					
+				}
+				setInputsOutputs(newModuleDefinition);
+				linkToParent(newModuleDefinition, moduleDef);
+				if ( compDef!=null && compDef.getTypes().contains(ComponentDefinition.DNA))
+				{
+					linkComponent(moduleDef, design, compDef);
+				}		
+				moduleDefs.add(newModuleDefinition);
+			}	
+		}
+		return moduleDefs;
+	}
+	
+	
+	private void findUses(List<Component> result, ComponentDefinition design, ComponentDefinition compDef)
+	{
+		if (design.getComponents()!=null)
+		{
+			for (Component componentTemp: design.getComponents())
+			{
+				if (componentTemp.getDefinitionURI().equals(compDef.getIdentity()))
+				{
+					result.add(componentTemp);
+				}
+				findUses(result, componentTemp.getDefinition(), compDef);
+			}
+			
+		}
+	}
+	
+	private void linkComponentOld(ModuleDefinition moduleDef, ComponentDefinition design, ComponentDefinition compDef) throws SBOLValidationException
+	{
+		FunctionalComponent fcDesign=getFunctionalComponent(moduleDef, design.getIdentity());
+		FunctionalComponent fcComponent=getFunctionalComponent(moduleDef, compDef.getIdentity());		
+		List<Component> uses=new ArrayList<Component>();
+		findUses(uses, design, compDef);
+		int i=1;
+		
+		for (Component component: uses)
+		{
+			MapsTo mapsTo=fcDesign.getMapsTo(compDef.getDisplayId() + "_mapsTo_" + i++);
+			if (mapsTo==null) {
+				
+				fcDesign.createMapsTo(compDef.getDisplayId() + "_mapsTo", RefinementType.USELOCAL, fcComponent.getIdentity(), component.getIdentity());
 			}
 		}
-		return interaction;		
 	}
-			
-	private Interaction addInteraction(SBOLDocument document, ModuleDefinition moduleDef, SBOLInteractionSummary summaryInteraction, ComponentDefinition compDef, ComponentDefinition replacementCompDef) throws VPRException, SBOLValidationException, VPRTripleStoreException
+	
+	private void createMapsTo(ModuleDefinition moduleDef, ComponentDefinition design, ComponentDefinition compDef, Component component) throws SBOLValidationException
 	{
-		Interaction interaction=null;
-		SBOLDocument sbolInteractionDocument=SBOLStackHandler.getInteraction(this.endPointUrl,summaryInteraction.getUri());
-		for (ModuleDefinition moduleDefTemp:sbolInteractionDocument.getModuleDefinitions())
-		{
-			for (Interaction sourceInteraction:moduleDefTemp.getInteractions())
-			{							
-				interaction=addInteraction(document, moduleDef, sourceInteraction, compDef, replacementCompDef);				
-			}
-		}	
-		return interaction;
+		FunctionalComponent fcDesign=getOrCreateFunctionalComponent(moduleDef, design.getIdentity());					
+		MapsTo mapsTo=fcDesign.getMapsTo(compDef.getDisplayId() + "_mapsTo");
+		if (mapsTo==null) {
+			FunctionalComponent fcComponent=getOrCreateFunctionalComponent(moduleDef, compDef.getIdentity());		
+				
+			fcDesign.createMapsTo(compDef.getDisplayId() + "_mapsTo", RefinementType.USELOCAL, fcComponent.getIdentity(), component.getIdentity());
+		}
 	}
+	private boolean linkComponent(ModuleDefinition moduleDef, ComponentDefinition design, ComponentDefinition compDef) throws SBOLValidationException
+	{
+		boolean found=false;
+		if (design.getComponents()!=null && design.getComponents().size()>0)
+		{	
+			for (Component componentTemp: design.getComponents())
+			{
+				if (componentTemp.getDefinitionURI().equals(compDef.getIdentity()))
+				{
+					createMapsTo(moduleDef, design, compDef, componentTemp);					
+					found=true;
+					
+				}
+				else
+				{
+					boolean foundInSubComponents=linkComponent(moduleDef, componentTemp.getDefinition(), compDef);
+					if (foundInSubComponents)
+					{
+						ComponentDefinition parentComponentDef=componentTemp.getDefinition();
+						//Create the parent component which has the component that is searched for
+						createMapsTo(moduleDef, design, parentComponentDef, componentTemp);	
+						found=true;
+					}
+				}
+			}
+			
+		}
+		return found;
+	}
+		
 	
 	private List<ComponentDefinition> getFlattenedDesigns(SBOLDocument document) throws SBOLValidationException, VPRException
 	{
@@ -724,56 +710,8 @@ public class SBOLInteractionAdder_GeneCentric{
 		}
 	}
 	
-	private ComponentDefinition getFlattened(SBOLDocument document, ComponentDefinition design) throws SBOLValidationException
-	{
-		if (document.getDefaultURIprefix()==null)
-		{
-			document.setDefaultURIprefix(SBOLHandler.getBaseUri(design.getIdentity().toString()));
-		}
-		ComponentDefinition flattenedDesign=document.createComponentDefinition(design.getDisplayId() + "_flattened", design.getTypes());
-		List<Component> orderedComponents=SBOLHandler.getOrderedComponents(design);
-		List<Component> leafComponents=new ArrayList<Component>();					
-		for (Component component:orderedComponents)
-		{
-			addComponentDefinition(flattenedDesign, design, component,leafComponents,OrientationType.INLINE);
-		}
-		addComponentOrder(flattenedDesign, leafComponents);
-		return flattenedDesign;
-	}
-	
 	
 
-	private List<ComponentDefinition> getComponents(ComponentDefinition compDef, URI subComponentRole)
-	{
-		List<ComponentDefinition> subComponentDefs=new ArrayList<ComponentDefinition>();
-		if (compDef.getComponents()!=null)
-		{
-			for (Component component:compDef.getComponents())
-			{
-				if (component.getDefinition().containsRole(subComponentRole))
-				{
-					subComponentDefs.add(component.getDefinition());
-				}
-			}
-		}
-		return subComponentDefs;
-	}
-
-//	private boolean isComposedOfTUs(ComponentDefinition compDef) {
-//		if (compDef.getComponents()!=null)
-//		{
-//			/*for (Component component:compDef.getComponents())
-//			{
-//				if (!component.getDefinition().containsRole(SequenceOntology.ENGINEERED_REGION) ||
-//						!component.getDefinition().containsRole(SequenceOntology.ENGINEERED_GENE))
-//				{
-//					return false;
-//				}
-//			}*/
-//		}
-//		return false;
-//	}
-	
 
 	private int getCountByRole(List<ComponentDefinition> compDefs, URI role)
 	{
@@ -794,7 +732,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		if (compDef.getComponents()!=null)
 		{
 			List<ComponentDefinition> compDefs=new ArrayList<ComponentDefinition>();
-			getLeafComponentDefinitions(compDef, compDefs, SequenceOntology.PROMOTER);
+			getLeafComponentDefinitions(compDef, compDefs);
 			int terminatorCount=getCountByRole(compDefs, SequenceOntology.TERMINATOR);
 			if (terminatorCount==1)
 			{
@@ -858,100 +796,38 @@ public class SBOLInteractionAdder_GeneCentric{
 		return displayId;
 	}
 		
-	
-
-	private ModuleDefinition getInteractionsModule(SBOLDocument sbolDocument) throws SBOLValidationException
-	{
-		sbolDocument.setDefaultURIprefix("http://www.virtualparts.org");//TODO:Replace the harcoded URL with a variable
-		URI uri=URI.create(sbolDocument.getDefaultURIprefix() +  "interactions");
-		ModuleDefinition moduleDef=sbolDocument.getModuleDefinition(uri);
-		if (moduleDef==null)
-		{			
-			moduleDef=sbolDocument.createModuleDefinition(sbolDocument.getDefaultURIprefix(), "interactions", "1.0");
-		}
-		return moduleDef;
-	}
 		
-												
 	
-	private List<ModuleDefinition> getUsedModuled(SBOLDocument document, ComponentDefinition compDef)
+	private Interaction copyInteraction (SBOLDocument doc, Interaction source,ModuleDefinition newModuleDef) throws SBOLValidationException, VPRException
 	{
-		List<ModuleDefinition> moduleDefs=new ArrayList<ModuleDefinition>();
-		if (document!=null && document.getModuleDefinitions()!=null && document.getModuleDefinitions().size()>0)
-		{
-			for (ModuleDefinition moduleDef:document.getModuleDefinitions())
-			{
-				if (moduleDef.getFunctionalComponents()!=null)
-				{
-					for (FunctionalComponent funcComp: moduleDef.getFunctionalComponents())
-					{
-						if (funcComp.getDefinition().equals(compDef.getIdentity()))
-						{
-							moduleDefs.add(moduleDef);
-						}
-					}
-				}
-			}
-		}
-		return moduleDefs;
-	}	
-		
-	private boolean isForReplacement(FunctionalComponent fcSource, ComponentDefinition componentWithTheInteraction, ComponentDefinition replacement)
-	{
-		if (componentWithTheInteraction!=null && replacement!=null && fcSource.getDefinitionURI().equals(componentWithTheInteraction.getIdentity()))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}			
-	}
-	private Interaction copyInteraction (SBOLDocument doc, Interaction source,ModuleDefinition moduleDef, ComponentDefinition componentWithTheInteraction, ComponentDefinition replacement) throws SBOLValidationException, VPRException
-	{
-		Interaction interaction=moduleDef.getInteraction(source.getDisplayId());
+		Interaction interaction=newModuleDef.getInteraction(source.getDisplayId());
 		if (interaction!=null)
 		{
 			return interaction;
 		}
-		interaction=moduleDef.createInteraction(source.getDisplayId(), source.getTypes());			
+		interaction=newModuleDef.createInteraction(source.getDisplayId(), source.getTypes());			
 		
 		copyIdentifiedProperties(doc,interaction, source);	
 		for (Participation sourceParticipation:source.getParticipations())
 		{
 			FunctionalComponent fcSource=sourceParticipation.getParticipant();
-			FunctionalComponent fc=null;
-			if (isForReplacement(fcSource, componentWithTheInteraction, replacement))
-			{
-				fc=getFunctionalComponent(moduleDef, replacement.getIdentity());
-			}			
-			else
-			{
-				fc=getFunctionalComponent(moduleDef, fcSource.getDefinitionURI());
-			}
-			if (fc==null)
+			FunctionalComponent fcNew=getFunctionalComponent(newModuleDef, fcSource.getDefinitionURI());
+			if (fcNew==null)
 			{
 				URI definitionURI=fcSource.getDefinitionURI();
 				AccessType access=fcSource.getAccess();				
 				String displayId=SBOLHandler.getDisplayId(definitionURI);
 				DirectionType direction=fcSource.getDirection();
 				access=AccessType.PUBLIC;								
-				
-				if (isForReplacement(fcSource, componentWithTheInteraction, replacement))
-				{
-					definitionURI=replacement.getIdentity();
-					displayId=replacement.getDisplayId();					
-				}
-				fc=moduleDef.createFunctionalComponent(displayId,access, definitionURI, direction);
+				fcNew=newModuleDef.createFunctionalComponent(displayId,access, definitionURI, direction);
 			}
-			Participation participation=interaction.createParticipation(sourceParticipation.getDisplayId(), fc.getIdentity(), sourceParticipation.getRoles());
+			Participation participation=interaction.createParticipation(sourceParticipation.getDisplayId(), fcNew.getIdentity(), sourceParticipation.getRoles());
 			copyIdentifiedProperties(doc,participation, sourceParticipation);
-			participation.setParticipant(fc.getIdentity());
+			participation.setParticipant(fcNew.getIdentity());
 		}
 		return interaction;		
 	}
-	
-	
+		
 	private boolean isPublicInputOrOutput(FunctionalComponent fComp)
 	{
 		boolean result=false;
@@ -963,28 +839,6 @@ public class SBOLInteractionAdder_GeneCentric{
 			}
 		}
 		return result;
-	}
-	
-	private List<ModuleDefinition> getModuleDefinitions (SBOLDocument document, ComponentDefinition compDef)
-	{
-		List<ModuleDefinition> moduleDefinitions=new ArrayList<ModuleDefinition>();
-		if (document!=null && document.getModuleDefinitions()!=null)
-		{
-			for (ModuleDefinition moduleDef:document.getModuleDefinitions())
-			{
-				if (moduleDef.getFunctionalComponents()!=null)
-				{
-					for (FunctionalComponent funcComp: moduleDef.getFunctionalComponents())
-					{
-						if (funcComp.getDefinitionURI().equals(compDef.getIdentity()))
-						{
-							moduleDefinitions.add(moduleDef);
-						}
-					}
-				}
-			}
-		}
-		return moduleDefinitions;
 	}
 	
 	
@@ -1133,78 +987,6 @@ public class SBOLInteractionAdder_GeneCentric{
 		return pos;
 	}
 	
-	private List<Component> getCDSComponents(List<Component> components,int promoterIndex, ComponentDefinition parentComponentDef) throws VPRException
-	{
-		Component promoterComp=components.get(promoterIndex);
-		
-		boolean foundTerminator=false;
-		String moduleId="";
-		OrientationType orientation=getOrientation(OrientationType.INLINE, parentComponentDef.getSequenceAnnotation(promoterComp));		
-		int index=promoterIndex;
-				
-		int increment=1;
-		if (orientation==OrientationType.REVERSECOMPLEMENT)
-		{
-			increment=-1;
-		}		
-		List<Component> CDSs=new ArrayList<Component>();	
-		while (!foundTerminator)
-		{
-			Component currentComp=components.get(index);
-			OrientationType currentComponnetOrientation=getOrientation(OrientationType.INLINE, parentComponentDef.getSequenceAnnotation(currentComp));
-			if (moduleId.length()>0)
-			{
-				moduleId=moduleId + "_";
-			}
-			moduleId=moduleId + currentComp.getDefinition().getDisplayId();
-			
-			if (currentComp.containsRole(SequenceOntology.CDS))
-			{
-				if (currentComponnetOrientation==orientation)
-				{
-					CDSs.add(currentComp);
-				}
-			}
-			else if (currentComp.containsRole(SequenceOntology.TERMINATOR))
-			{
-				if (currentComponnetOrientation==orientation)
-				{
-					foundTerminator=true;
-					break;
-				}
-			}
-			index=index + increment;
-			if (index==-1 || index==components.size()+1)
-			{
-				break;
-			}
-		}
-		if (foundTerminator)
-		{
-			return CDSs;
-		}
-		else
-		{
-			throw new VPRException(String.format("Could not create the model for %s. %s promoter does not end with a terminator!", parentComponentDef.getDisplayId(), promoterComp.getDisplayId()));			
-		}
-	}
-	
-	private String getId (List<Component> entities)
-	{
-		String id="";
-		if (entities!=null)
-		{
-			for (Identified identified:entities)
-			{
-				if (id.length()>0)
-				{
-					id=id + "_";
-				}
-				id=id + identified.getDisplayId();
-			}
-		}
-		return id;
-	}
 	
 	private MapsTo getMapsTo(Module module,
 			FunctionalComponent functionalComp, FunctionalComponent childFunctionalComp) {
@@ -1250,6 +1032,27 @@ public class SBOLInteractionAdder_GeneCentric{
 		}
 		return null;
 	}	
+	
+	private FunctionalComponent getOrCreateFunctionalComponent(ModuleDefinition moduleDef,URI componentDefinitionURI) throws SBOLValidationException {
+		FunctionalComponent found=null;
+		 
+		if (moduleDef.getFunctionalComponents()!=null)
+		{
+			
+			for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
+			{
+				if (fComp.getDefinitionURI().equals(componentDefinitionURI))
+				{
+					return fComp;
+				}
+			}
+		}
+		if (found==null)
+		{
+			found=moduleDef.createFunctionalComponent(SBOLHandler.getDisplayId(componentDefinitionURI) + "_fc", AccessType.PRIVATE, componentDefinitionURI, DirectionType.NONE);			
+		}
+		return found;
+	}
 
 
 	
