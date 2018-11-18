@@ -179,7 +179,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		}	
 	}
 
-	private MultiValueMap<URI, SBOLInteractionSummary> getInteractions(SBOLDocument sbolDocument) throws VPRException, SBOLValidationException
+	private MultiValueMap<URI, SBOLInteractionSummary> getInteractions(SBOLDocument sbolDocument) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		MultiValueMap<URI, SBOLInteractionSummary> interactions=new MultiValueMap<URI, SBOLInteractionSummary>();		
 		addInteractions(sbolDocument,  SequenceOntology.CDS, interactions);
@@ -190,7 +190,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		return interactions;
 	}
 	
-	private void addInteractions(SBOLDocument sbolDocument, URI role,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException
+	private void addInteractions(SBOLDocument sbolDocument, URI role,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		List<ComponentDefinition> componentDefs=SBOLHandler.getComponentDefinitionsByRole(sbolDocument, role);
 		for (ComponentDefinition componentDef:componentDefs)
@@ -214,7 +214,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	}
 	
 	
-	private void addProteinInteractions(URI proteinDefUri, MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException
+	private void addProteinInteractions(URI proteinDefUri, MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		List<SBOLInteractionSummary> proteinInteractions=SBOLStackHandler.getInteractions(proteinDefUri,this.endPointUrl,this.queryParameters);
 		if (proteinInteractions!=null)
@@ -224,7 +224,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		}
 	}		
 	
-	private void addInteractionsOfDimers(List<SBOLInteractionSummary> proteinInteractions, URI proteinDefUri,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException
+	private void addInteractionsOfDimers(List<SBOLInteractionSummary> proteinInteractions, URI proteinDefUri,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		for(SBOLInteractionSummary proteinInteraction:proteinInteractions)
 		{
