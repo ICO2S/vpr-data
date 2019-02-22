@@ -150,7 +150,12 @@ public class SBOLInteractionAdder_GeneCentric{
 				addNonDnaInteractions(document, parentModuleDef, nonDNAComponentDefs, interactions);
 				setInputsOutputs(moduleDef);
 				//setInputsOutputs(parentModuleDef);
-				linkToParent(moduleDef, parentModuleDef);				
+				
+				linkToParent(moduleDef, parentModuleDef, compDef);	
+				
+				//FunctionalComponent fCompTU=getFunctionalComponent(moduleDef, compDef.getIdentity());
+				
+				//linkToParentForOneComponent(fCompTU, moduleDef, parentModuleDef);
 
 			}	
 			else{
@@ -250,7 +255,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	}
 	
 	
-	private void linkToParent(ModuleDefinition moduleDef, ModuleDefinition parentModuleDef) throws SBOLValidationException {
+	private void linkToParentDel(ModuleDefinition moduleDef, ModuleDefinition parentModuleDef) throws SBOLValidationException {
 		if (moduleDef.getFunctionalComponents()!=null)
 		{
 			for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
@@ -286,7 +291,66 @@ public class SBOLInteractionAdder_GeneCentric{
 			}
 		}		
 	}
+	private void linkToParent(ModuleDefinition moduleDef, ModuleDefinition parentModuleDef) throws SBOLValidationException {
+		if (moduleDef.getFunctionalComponents()!=null)
+		{
+			for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
+			{
+				linkToParentForOneComponent(fComp, moduleDef, parentModuleDef);	
+			}
+		}		
+	}
 	
+	private void linkToParent(ModuleDefinition moduleDef, ModuleDefinition parentModuleDef, ComponentDefinition transcriptionalUnit) throws SBOLValidationException {
+		if (moduleDef.getFunctionalComponents()!=null)
+		{
+			for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
+			{
+				ComponentDefinition compDef=fComp.getDefinition();
+				boolean link=true;
+				if (compDef.containsType(ComponentDefinition.DNA) && compDef.getIdentity()!=transcriptionalUnit.getIdentity())
+				{
+					link=false;
+				}
+				if (link)
+				{
+					linkToParentForOneComponent(fComp, moduleDef, parentModuleDef);	
+				}
+			}
+		}		
+	}
+	
+	private void linkToParentForOneComponent(FunctionalComponent fComp, ModuleDefinition moduleDef, ModuleDefinition parentModuleDef) throws SBOLValidationException
+	{
+		if (isPublicInputOrOutput(fComp))
+		{
+			FunctionalComponent parentFComp=getFunctionalComponent(parentModuleDef,fComp.getDefinitionURI());
+			//If the associated functional component does not exist in the parent moduledef, create the functional component
+			if (parentFComp==null)
+			{
+				parentFComp= parentModuleDef.createFunctionalComponent(fComp.getDisplayId(), fComp.getAccess(), fComp.getDefinitionURI(), fComp.getDirection());						
+			}
+			else
+			{
+				if (parentFComp.getDirection()!=fComp.getDirection())
+				{
+					parentFComp.setDirection(DirectionType.INOUT);
+				}
+			}
+			Module subModule=getSubModule(parentModuleDef, moduleDef);
+			//If the sub module does not exist, create the sub module
+			if (subModule==null)
+			{
+				subModule=parentModuleDef.createModule(parentModuleDef.getDisplayId() + "_" +  moduleDef.getDisplayId() + "_sub", moduleDef.getIdentity());
+			}						
+			MapsTo mapsTo=getMapsTo(subModule, parentFComp, fComp);
+			//If the mapping does not exist already, create the mapsTo entity
+			if (mapsTo==null)
+			{
+				subModule.createMapsTo(subModule.getDisplayId()  + "_" + parentFComp.getDisplayId() + "_" + fComp.getDisplayId()  , RefinementType.VERIFYIDENTICAL,parentFComp.getIdentity(), fComp.getIdentity());
+			}																	
+		}
+	}
 	
 	private Set<URI> addInternalInteractions(SBOLDocument document, ModuleDefinition moduleDef,
 			MultiValueMap<URI, SBOLInteractionSummary> interactions, ComponentDefinition design) throws SBOLValidationException, VPRException, VPRTripleStoreException 
@@ -490,7 +554,11 @@ public class SBOLInteractionAdder_GeneCentric{
 					}
 					else
 					{
-						linkToParent(document.getModuleDefinition(interactionModuleDef.getIdentity()), moduleDef);
+						boolean hasDnaParticipant=hasDnaParticipant(document, interactionModuleDef, interactionModuleDef.getInteractions().iterator().next());
+						if (!hasDnaParticipant)
+						{
+							linkToParent(document.getModuleDefinition(interactionModuleDef.getIdentity()), moduleDef);
+						}
 					}
 					
 					
