@@ -150,7 +150,12 @@ public class SBOLInteractionAdder_GeneCentric{
 				addNonDnaInteractions(document, parentModuleDef, nonDNAComponentDefs, interactions);
 				setInputsOutputs(moduleDef);
 				//setInputsOutputs(parentModuleDef);
-				linkToParent(moduleDef, parentModuleDef);				
+				
+				linkToParent(moduleDef, parentModuleDef, compDef);	
+				
+				//FunctionalComponent fCompTU=getFunctionalComponent(moduleDef, compDef.getIdentity());
+				
+				//linkToParentForOneComponent(fCompTU, moduleDef, parentModuleDef);
 
 			}	
 			else{
@@ -179,7 +184,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		}	
 	}
 
-	private MultiValueMap<URI, SBOLInteractionSummary> getInteractions(SBOLDocument sbolDocument) throws VPRException, SBOLValidationException
+	private MultiValueMap<URI, SBOLInteractionSummary> getInteractions(SBOLDocument sbolDocument) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		MultiValueMap<URI, SBOLInteractionSummary> interactions=new MultiValueMap<URI, SBOLInteractionSummary>();		
 		addInteractions(sbolDocument,  SequenceOntology.CDS, interactions);
@@ -190,7 +195,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		return interactions;
 	}
 	
-	private void addInteractions(SBOLDocument sbolDocument, URI role,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException
+	private void addInteractions(SBOLDocument sbolDocument, URI role,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		List<ComponentDefinition> componentDefs=SBOLHandler.getComponentDefinitionsByRole(sbolDocument, role);
 		for (ComponentDefinition componentDef:componentDefs)
@@ -214,7 +219,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	}
 	
 	
-	private void addProteinInteractions(URI proteinDefUri, MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException
+	private void addProteinInteractions(URI proteinDefUri, MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		List<SBOLInteractionSummary> proteinInteractions=SBOLStackHandler.getInteractions(proteinDefUri,this.endPointUrl,this.queryParameters);
 		if (proteinInteractions!=null)
@@ -224,7 +229,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		}
 	}		
 	
-	private void addInteractionsOfDimers(List<SBOLInteractionSummary> proteinInteractions, URI proteinDefUri,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException
+	private void addInteractionsOfDimers(List<SBOLInteractionSummary> proteinInteractions, URI proteinDefUri,MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		for(SBOLInteractionSummary proteinInteraction:proteinInteractions)
 		{
@@ -250,7 +255,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	}
 	
 	
-	private void linkToParent(ModuleDefinition moduleDef, ModuleDefinition parentModuleDef) throws SBOLValidationException {
+	private void linkToParentDel(ModuleDefinition moduleDef, ModuleDefinition parentModuleDef) throws SBOLValidationException {
 		if (moduleDef.getFunctionalComponents()!=null)
 		{
 			for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
@@ -286,7 +291,66 @@ public class SBOLInteractionAdder_GeneCentric{
 			}
 		}		
 	}
+	private void linkToParent(ModuleDefinition moduleDef, ModuleDefinition parentModuleDef) throws SBOLValidationException {
+		if (moduleDef.getFunctionalComponents()!=null)
+		{
+			for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
+			{
+				linkToParentForOneComponent(fComp, moduleDef, parentModuleDef);	
+			}
+		}		
+	}
 	
+	private void linkToParent(ModuleDefinition moduleDef, ModuleDefinition parentModuleDef, ComponentDefinition transcriptionalUnit) throws SBOLValidationException {
+		if (moduleDef.getFunctionalComponents()!=null)
+		{
+			for (FunctionalComponent fComp:moduleDef.getFunctionalComponents())
+			{
+				ComponentDefinition compDef=fComp.getDefinition();
+				boolean link=true;
+				if (compDef.containsType(ComponentDefinition.DNA) && compDef.getIdentity()!=transcriptionalUnit.getIdentity())
+				{
+					link=false;
+				}
+				if (link)
+				{
+					linkToParentForOneComponent(fComp, moduleDef, parentModuleDef);	
+				}
+			}
+		}		
+	}
+	
+	private void linkToParentForOneComponent(FunctionalComponent fComp, ModuleDefinition moduleDef, ModuleDefinition parentModuleDef) throws SBOLValidationException
+	{
+		if (isPublicInputOrOutput(fComp))
+		{
+			FunctionalComponent parentFComp=getFunctionalComponent(parentModuleDef,fComp.getDefinitionURI());
+			//If the associated functional component does not exist in the parent moduledef, create the functional component
+			if (parentFComp==null)
+			{
+				parentFComp= parentModuleDef.createFunctionalComponent(fComp.getDisplayId(), fComp.getAccess(), fComp.getDefinitionURI(), fComp.getDirection());						
+			}
+			else
+			{
+				if (parentFComp.getDirection()!=fComp.getDirection())
+				{
+					parentFComp.setDirection(DirectionType.INOUT);
+				}
+			}
+			Module subModule=getSubModule(parentModuleDef, moduleDef);
+			//If the sub module does not exist, create the sub module
+			if (subModule==null)
+			{
+				subModule=parentModuleDef.createModule(parentModuleDef.getDisplayId() + "_" +  moduleDef.getDisplayId() + "_sub", moduleDef.getIdentity());
+			}						
+			MapsTo mapsTo=getMapsTo(subModule, parentFComp, fComp);
+			//If the mapping does not exist already, create the mapsTo entity
+			if (mapsTo==null)
+			{
+				subModule.createMapsTo(subModule.getDisplayId()  + "_" + parentFComp.getDisplayId() + "_" + fComp.getDisplayId()  , RefinementType.VERIFYIDENTICAL,parentFComp.getIdentity(), fComp.getIdentity());
+			}																	
+		}
+	}
 	
 	private Set<URI> addInternalInteractions(SBOLDocument document, ModuleDefinition moduleDef,
 			MultiValueMap<URI, SBOLInteractionSummary> interactions, ComponentDefinition design) throws SBOLValidationException, VPRException, VPRTripleStoreException 
@@ -490,7 +554,11 @@ public class SBOLInteractionAdder_GeneCentric{
 					}
 					else
 					{
-						linkToParent(document.getModuleDefinition(interactionModuleDef.getIdentity()), moduleDef);
+						boolean hasDnaParticipant=hasDnaParticipant(document, interactionModuleDef, interactionModuleDef.getInteractions().iterator().next());
+						if (!hasDnaParticipant)
+						{
+							linkToParent(document.getModuleDefinition(interactionModuleDef.getIdentity()), moduleDef);
+						}
 					}
 					
 					

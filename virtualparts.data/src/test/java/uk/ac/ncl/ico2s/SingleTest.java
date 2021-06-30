@@ -2,15 +2,20 @@ package uk.ac.ncl.ico2s;
 
 import java.io.File;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.sbolstandard.core2.SBOLDocument;
 import org.sbolstandard.core2.SBOLReader;
-import org.virtualparts.data.SBOLInteractionAdder_GeneCentric;
+import org.virtualparts.data.QueryParameters;
+import org.virtualparts.data2.SBOLInteractionAdder_GeneCentric;
 import org.virtualparts.sbol.SBOLHandler;
 import org.virtualparts.sbol.SVPWriteHandler;
 
-public class SingleTest {
-    public void testPopulateWithInteractionsNegativeAutoRegulatoryeCelloDesign() throws Exception
+import junit.framework.TestCase;
+
+public class SingleTest extends TestCase {
+    public void PopulateWithInteractionsNegativeAutoRegulatoryeCelloDesign() throws Exception
     {
 	 try
 	 {
@@ -27,9 +32,27 @@ public class SingleTest {
 	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "testSBOLWrite.xml")); 
 	    		
 	    SBOLDocument newDoc=SBOLReader.read(new File(TestUtils.getOutputDir() + "testSBOLWrite.xml"));
-		    
-	    	
-		 
+	 }
+	 catch (Exception e)
+	 {
+		 e.printStackTrace();
+		 throw e;
+	 }
+    }
+    
+    public void testInteractionsCopiedToTopLevel() throws Exception
+    {
+	 try
+	 {
+		SBOLDocument doc=SBOLReader.read(TestUtils.getOutputDir() + "InteractionsCopiedToTopLevelInput.sbol");
+		String endpoint="https://synbiohub.programmingbiology.org/sparql"; 
+		List<URI> collections=new ArrayList<URI>();
+	    collections.add(new URI("https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/Eco1C1G1T1_collection/1"));
+	    QueryParameters params=new QueryParameters();
+	    params.setCollectionURIs(collections);
+		SBOLInteractionAdder_GeneCentric interactionAdder=new SBOLInteractionAdder_GeneCentric(URI.create(endpoint),"newDesign",params);
+		interactionAdder.addInteractions(doc);    	 	   
+	    SBOLHandler.write(doc, new File(TestUtils.getOutputDir() + "InteractionsCopiedToTopLevelOutput.xml")); 
 	
 	 }
 	 catch (Exception e)

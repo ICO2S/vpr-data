@@ -30,7 +30,7 @@ public class SBOLStackHandler {
 		return collectionFilter;
 		
 	}
-	public static List<SBOLInteractionSummary> getInteractions(URI componentDefURI, URI stackURI,QueryParameters params) throws VPRException
+	public static List<SBOLInteractionSummary> getInteractions(URI componentDefURI, URI stackURI,QueryParameters params) throws VPRException, VPRTripleStoreException
 	{
 		List<SBOLInteractionSummary> interactions=new ArrayList<SBOLInteractionSummary>();
 		TripleStoreHandler ts=new TripleStoreHandler(stackURI.toString());
@@ -56,7 +56,16 @@ public class SBOLStackHandler {
 			query=ts.getSparqlQuery("getComponentInteractions.sparql");
 			query=String.format(query, componentDefURI.toString());
 		}
-		ResultSet rs=ts.executeSparql(query);
+		ResultSet rs=null;
+		try
+		{
+		   rs=ts.executeSparql(query);
+		}
+		catch (Exception e)
+		{
+			throw new VPRTripleStoreException("Could mnot execute the query:" + query);
+			
+		}
 		while (rs.hasNext())
 		{
 			QuerySolution solution = rs.next();
