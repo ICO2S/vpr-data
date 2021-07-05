@@ -42,6 +42,10 @@ public class Terms {
 		public static final NamespaceBinding Ns = NamespaceBinding("http://identifiers.org/biomodels.sbo/", "sbo");
 	}
 	
+	public static final class prov {
+		public static final NamespaceBinding Ns = NamespaceBinding("http://www.w3.org/ns/prov#", "prov");
+	}
+	
 
 	public static final class mirnatarget {
 		public static final NamespaceBinding Ns = NamespaceBinding("http://purl.obolibrary.org/obo/", "obo");

@@ -284,7 +284,15 @@ public class RDFToSBOLConverter {
 			 document.setDefaultURIprefix(SBOLHandler.getBaseUri(sbolResource.getURI()));
 			 String elements=RDFHandler.getPropertyValueAsString(model, sbolResource, Terms.toURI(Terms.sbol2.vocabulary.elements));
 			 String encoding=RDFHandler.getPropertyValueAsString(model, sbolResource, Terms.toURI(Terms.sbol2.vocabulary.encoding));
-			 document.createSequence(displayId, elements, URI.create(encoding));
+			 String version=getVersion(model, sbolResource);
+			 if (version==null)
+			 {
+				 document.createSequence(displayId, elements, URI.create(encoding));
+			 }
+			 else
+			 {
+				 document.createSequence(displayId, version, elements, URI.create(encoding));
+			 }
 		 }
 		 		 
 		 /*filtered=model.filter(sbolResource, RDF.TYPE, new URIImpl(toURI(Terms.sbol2.vocabulary.ModuleDefinition).toString()));		 

@@ -3,12 +3,22 @@ package org.virtualparts.data;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.namespace.QName;
+
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.StmtIterator;
 import org.sbolstandard.core2.Annotation;
 import org.sbolstandard.core2.ComponentDefinition;
+import org.sbolstandard.core2.Identified;
 import org.sbolstandard.core2.SBOLDocument;
+import org.sbolstandard.core2.SBOLValidationException;
 import org.virtualparts.VPRException;
 import org.virtualparts.VPRTripleStoreException;
 import org.virtualparts.sbol.SBOLHandler;
@@ -260,6 +270,106 @@ public class SBOLStackHandler {
 				 sparqlFilter=sparqlFilter + "&&" + subFilter;
 			 }
 			 return  sparqlFilter;
+		}
+		
+		private static String getCommaSeparatedURIs (List<Identified> identifieds)
+		{
+			String result="";
+			if (identifieds!=null)
+			{
+				for (Identified identified:identifieds)
+				{
+					result= result + String.format("<%s>,", identified.getIdentity());
+				}
+				if  (!result.isEmpty())
+				{
+					result=result.substring(0, result.length()-1);
+				}
+			}
+			return result;
+		}
+		
+		private static boolean isAnnotation(String propertyURI)
+		{
+			boolean result=true;
+			if (propertyURI.startsWith(Terms.sbol2.Ns.getPrefix()))
+			{
+				result=false;
+			}
+			else if (propertyURI.startsWith(Terms.rdf.Ns.getPrefix()))
+			{
+				result=false;
+			}
+			else if (propertyURI.startsWith(Terms.rdfs.Ns.getPrefix()))
+			{
+				result=false;
+			}
+			else if (propertyURI.startsWith(Terms.prov.Ns.getPrefix()))
+			{
+				result=false;
+			}
+			return result;			
+		}
+		
+		public static void annotateIdentifieds(List<Identified> identifieds, String stackURI) throws VPRException, SBOLValidationException
+		{
+			annotateIdentifieds(identifieds, stackURI,null);
+		}
+		
+		private static String getPropertyFilter(String namespacePrefix)
+		{
+			//e.g.:   FILTER (strstarts(str(?p),"http://www.virtualparts.org/terms#"))
+			if (namespacePrefix.isEmpty())
+			{
+				return "";
+			}
+			else
+			{
+				return String.format("FILTER (strstarts(str(?p),\"%s\"))",namespacePrefix);
+			}
+		}
+		
+		public static void annotateIdentifieds(List<Identified> identifieds, String stackURI, String annotationNameSpacePrefix) throws VPRException, SBOLValidationException
+		{
+			 TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());		 
+			 String query=ts.getSparqlQuery("getIdentifiedAnnotations.sparql");
+			 String uriList=getCommaSeparatedURIs(identifieds);
+			 String propertyFilter=getPropertyFilter(annotationNameSpacePrefix);
+			 query=String.format(query, propertyFilter,uriList);
+			 Model model= ts.executeConstructSparqlAsModel(query);
+			 for (Identified identified:identifieds)
+			 {
+				 Resource resource=model.getResource(identified.getIdentity().toString());
+				 if (resource!=null)
+				 {
+					 StmtIterator stmtIterator=resource.listProperties();
+					 if (stmtIterator!=null)
+					 {
+						 while (stmtIterator.hasNext())
+						 {
+							 Statement stmt=stmtIterator.next();
+							 Property property=stmt.getPredicate();
+							 if (isAnnotation(property.getURI()))
+							 {
+								  RDFNode object=stmt.getObject();
+								  String value="";
+								  if (object.isResource())
+								  {
+									 value =object.asResource().getURI();
+								  }
+								  else
+								  {
+									  value=object.asLiteral().getValue().toString();
+								  }
+								  QName qName=new QName(property.getNameSpace(), property.getLocalName());
+								  identified.createAnnotation(qName, value);
+							 }
+						 }
+					 }
+				 
+				 }
+			 }
+			
 		}
 		
 }
