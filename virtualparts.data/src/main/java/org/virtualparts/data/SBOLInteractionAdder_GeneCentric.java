@@ -37,6 +37,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	private String rootModuleId=null;
 	private QueryParameters queryParameters=null;
 	private boolean designsPublicAccess=false;
+	private String token=null;
 	
 	public SBOLInteractionAdder_GeneCentric(URI endPointUrl)
 	{
@@ -203,7 +204,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		List<ComponentDefinition> componentDefs=SBOLHandler.getComponentDefinitionsByRole(sbolDocument, role);
 		for (ComponentDefinition componentDef:componentDefs)
 		{
-			List<SBOLInteractionSummary> componentInteractions=SBOLStackHandler.getInteractions(componentDef.getIdentity(),this.endPointUrl,this.queryParameters);
+			List<SBOLInteractionSummary> componentInteractions=SBOLStackHandler.getInteractions(componentDef.getIdentity(),this.endPointUrl,token,this.queryParameters);
 			if (componentInteractions!=null && componentInteractions.size()>0)
 			{
 				interactions.putAll(componentDef.getIdentity(),componentInteractions);	
@@ -224,7 +225,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	
 	private void addProteinInteractions(URI proteinDefUri, MultiValueMap<URI, SBOLInteractionSummary> interactions) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
-		List<SBOLInteractionSummary> proteinInteractions=SBOLStackHandler.getInteractions(proteinDefUri,this.endPointUrl,this.queryParameters);
+		List<SBOLInteractionSummary> proteinInteractions=SBOLStackHandler.getInteractions(proteinDefUri,this.endPointUrl,token,this.queryParameters);
 		if (proteinInteractions!=null)
 		{
 			interactions.putAll(proteinDefUri,proteinInteractions);		
@@ -244,7 +245,7 @@ public class SBOLInteractionAdder_GeneCentric{
 					{
 						if (interactions.getCollection(componentDefUri)==null)
 						{
-							List<SBOLInteractionSummary> dimerInteractions=SBOLStackHandler.getInteractions(componentDefUri,this.endPointUrl,this.queryParameters);
+							List<SBOLInteractionSummary> dimerInteractions=SBOLStackHandler.getInteractions(componentDefUri,this.endPointUrl,token,this.queryParameters);
 							if (dimerInteractions!=null)
 							{
 								interactions.putAll(componentDefUri,dimerInteractions);			
@@ -594,7 +595,7 @@ public class SBOLInteractionAdder_GeneCentric{
 		}
 		if (sbolInteractionDocument==null)
 		{
-			sbolInteractionDocument=SBOLStackHandler.getInteractionDetailed(this.endPointUrl,participantInteractionSummary.getUri());
+			sbolInteractionDocument=SBOLStackHandler.getInteractionDetailed(this.endPointUrl,token,participantInteractionSummary.getUri());
 			cacher.putInCache(sbolInteractionDocument, hashCode);
 		}
 		return sbolInteractionDocument;
@@ -652,7 +653,7 @@ public class SBOLInteractionAdder_GeneCentric{
 			URI componentDefinitionURI=participation.getParticipant().getDefinitionURI();					
 			if (document.getComponentDefinition(componentDefinitionURI)==null)
 			{
-				SBOLDocument tempDocument= SBOLStackHandler.getComponent(componentDefinitionURI, this.endPointUrl);
+				SBOLDocument tempDocument= SBOLStackHandler.getComponent(componentDefinitionURI, this.endPointUrl, token);
 				for (ComponentDefinition tempCompDef:tempDocument.getComponentDefinitions())
 				{
 					ComponentDefinition compDefParticipation=createComponentDefinition(document, tempCompDef);
@@ -667,7 +668,7 @@ public class SBOLInteractionAdder_GeneCentric{
 	private Interaction addInteraction(SBOLDocument document, ModuleDefinition moduleDef, SBOLInteractionSummary summaryInteraction, ComponentDefinition compDef, ComponentDefinition replacementCompDef) throws VPRException, SBOLValidationException, VPRTripleStoreException
 	{
 		Interaction interaction=null;
-		SBOLDocument sbolInteractionDocument=SBOLStackHandler.getInteraction(this.endPointUrl,summaryInteraction.getUri());
+		SBOLDocument sbolInteractionDocument=SBOLStackHandler.getInteraction(this.endPointUrl,token,summaryInteraction.getUri());
 		for (ModuleDefinition moduleDefTemp:sbolInteractionDocument.getModuleDefinitions())
 		{
 			for (Interaction sourceInteraction:moduleDefTemp.getInteractions())

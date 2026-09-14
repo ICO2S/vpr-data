@@ -30,10 +30,10 @@ public class SBOLStackHandler {
 		return collectionFilter;
 		
 	}
-	public static List<SBOLInteractionSummary> getInteractions(URI componentDefURI, URI stackURI,QueryParameters params) throws VPRException, VPRTripleStoreException
+	public static List<SBOLInteractionSummary> getInteractions(URI componentDefURI, URI stackURI,String token, QueryParameters params) throws VPRException, VPRTripleStoreException
 	{
 		List<SBOLInteractionSummary> interactions=new ArrayList<SBOLInteractionSummary>();
-		TripleStoreHandler ts=new TripleStoreHandler(stackURI.toString());
+		TripleStoreHandler ts=new TripleStoreHandler(stackURI.toString(),token);
 		String query=null;
 		if (params!=null && params.getCollectionURIs()!=null && params.getCollectionURIs().size()>0)
 		{
@@ -59,11 +59,11 @@ public class SBOLStackHandler {
 		ResultSet rs=null;
 		try
 		{
-		   rs=ts.executeSparql(query);
+		   rs=ts.executeSparql(query,token);
 		}
 		catch (Exception e)
 		{
-			throw new VPRTripleStoreException("Could mnot execute the query:" + query);
+			throw new VPRTripleStoreException("Could not execute the query:" + query);
 			
 		}
 		while (rs.hasNext())
@@ -93,11 +93,11 @@ public class SBOLStackHandler {
 		return interactions;								
 	}
 	
-	public static SBOLDocument getSubComponents(URI stackURI, URI componentURI) throws VPRException {
-		TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());
+	public static SBOLDocument getSubComponents(URI stackURI, String token, URI componentURI) throws VPRException {
+		TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString(),token);
 		String query = ts.getSparqlQuery("getSubComponents.sparql");
 		query = String.format(query, componentURI.toString(),componentURI.toString());
-		String sbolData = ts.executeConstructSparql(query);
+		String sbolData = ts.executeConstructSparql(query,token);
 		SBOLDocument doc =null;
 		try
 		{
@@ -114,21 +114,21 @@ public class SBOLStackHandler {
 		return doc;
 	}
 	
-	public static SBOLDocument getInteraction(URI stackURI, URI interactionURI) throws VPRException {
-		TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());
+	public static SBOLDocument getInteraction(URI stackURI, String token, URI interactionURI) throws VPRException {
+		TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString(),token);
 		String query = ts.getSparqlQuery("getInteraction.sparql");
 		query = String.format(query, interactionURI.toString(),interactionURI.toString());
-		String sbolData = ts.executeConstructSparql(query);
+		String sbolData = ts.executeConstructSparql(query,token);
 		SBOLDocument doc = SBOLHandler.read(sbolData);
 		return doc;
 	}
 	
-	public static SBOLDocument getInteractionDetailed(URI stackURI, URI interactionURI) throws VPRException {
+	public static SBOLDocument getInteractionDetailed(URI stackURI, String token, URI interactionURI) throws VPRException {
 		
-		TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());
+		TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString(),token);
 		String query = ts.getSparqlQuery("getInteractionDetailed.sparql");
 		query = String.format(query, interactionURI.toString(),interactionURI.toString(),interactionURI.toString());
-		String sbolData = ts.executeConstructSparql(query);		
+		String sbolData = ts.executeConstructSparql(query,token);		
 		SBOLDocument doc = null;
 		try
 		{
@@ -142,12 +142,12 @@ public class SBOLStackHandler {
 		return doc;
 	}
 	
-	 public static SBOLDocument getComponent(URI componentURI, URI stackURI) throws VPRTripleStoreException, VPRException
+	 public static SBOLDocument getComponent(URI componentURI, URI stackURI, String token) throws VPRTripleStoreException, VPRException
 	 {
-		 TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());		 
+		 TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString(),token);		 
 		 String query=ts.getSparqlQuery("getComponent.sparql");
 		 query=String.format(query, componentURI);
-		 Model model= ts.executeConstructSparqlAsModel(query);
+		 Model model= ts.executeConstructSparqlAsModel(query,token);
 		 SBOLDocument doc =null;
 		 try
 		 {
@@ -163,14 +163,14 @@ public class SBOLStackHandler {
 		 return doc;
 	}
 	 
-		public static int getSearchCount(SBOLDocument sbolQuery, URI stackURI) throws VPRTripleStoreException, VPRException
+		public static int getSearchCount(SBOLDocument sbolQuery, URI stackURI, String token) throws VPRTripleStoreException, VPRException
 		{
 			int count=-1;
-			TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());	
+			TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString(),token);	
 			String query=ts.getSparqlQuery("getSearchCount.sparql");
 			String filter=getSearchFilter(sbolQuery);
 			query=String.format(query, filter);	    			
-			ResultSet rs=ts.executeSparql(query);
+			ResultSet rs=ts.executeSparql(query,token);
 			if (rs.hasNext())
 			{
 				QuerySolution solution = rs.next();
@@ -179,26 +179,26 @@ public class SBOLStackHandler {
 			return count;
 		}
 		
-		 public static SBOLDocument searchComponents(SBOLDocument sbolQuery, URI stackURI,int page, int pageSize) throws VPRTripleStoreException, VPRException
+		 public static SBOLDocument searchComponents(SBOLDocument sbolQuery, URI stackURI, String token, int page, int pageSize) throws VPRTripleStoreException, VPRException
 		 {
-			 TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());		 
+			 TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString(),token);		 
 			 String query=ts.getSparqlQuery("searchComponents.sparql");			 
 			 String filter=getSearchFilter(sbolQuery);
 			 int offset=(page-1)*pageSize;
 			 query=String.format(query, filter, pageSize, offset);		    					
-			 String sbolData = ts.executeConstructSparql(query);
+			 String sbolData = ts.executeConstructSparql(query,token);
 			 SBOLDocument doc = SBOLHandler.read(sbolData);
 			 return doc;
 		}
 		 
-		 public static String searchComponentsUsingJson(SBOLDocument sbolQuery, URI stackURI,int page, int pageSize) throws VPRTripleStoreException, VPRException
+		 public static String searchComponentsUsingJson(SBOLDocument sbolQuery, URI stackURI,String token, int page, int pageSize) throws VPRTripleStoreException, VPRException
 		 {
-			 TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString());		 
+			 TripleStoreHandler ts = new TripleStoreHandler(stackURI.toString(),token);		 
 			 String query=ts.getSparqlQuery("searchComponentsTable.sparql");			 
 			 String filter=getSearchFilter(sbolQuery);
 			 int offset=(page-1)*pageSize;
 			 query=String.format(query, filter, pageSize, offset);		    					
-			 String result = ts.executeSparqlWithJson(query);
+			 String result = ts.executeSparqlWithJson(query,token);
 			 return result;
 		}
 						
