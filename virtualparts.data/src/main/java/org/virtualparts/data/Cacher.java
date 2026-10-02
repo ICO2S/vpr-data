@@ -24,7 +24,7 @@ public Cacher() throws VPRException
 		 CompositeCacheManager ccm = CompositeCacheManager.getUnconfiguredInstance(); 
 		 Properties props = new Properties(); 
 		 //props.load(new "cache.ccf"); 
-		 InputStream stream= new TripleStoreHandler("").getClass().getClassLoader().getResourceAsStream("cache.ccf");
+		 InputStream stream= new TripleStoreHandler("","").getClass().getClassLoader().getResourceAsStream("cache.ccf");
 		 props.load(stream);
 		 //parseProperties(props);
 		 ccm.configure(props);
